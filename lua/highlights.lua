@@ -87,7 +87,7 @@ M.add = {
   St_CopilotDisabled = { bg = "black", fg = "red" },
   CmpItemKindCopilot = { bg = "vibrant_green", fg = "black" },
   DiagnosticUnnecessary = { fg = "purple", italic = true },
-  IblIndent = { fg = "one_bg" },
+  -- IblIndent = { fg = "one_bg" },
   CursorLine = { bg = "white" },
 }
 
