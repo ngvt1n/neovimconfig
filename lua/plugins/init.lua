@@ -17,6 +17,16 @@ return {
         init = function()
             vim.g.vimtex_view_general_viewer = 'okular'
             vim.g.vimtex_view_general_options = '--unique file:@pdf#src:@line@tex'
+            vim.g.vimtex_delim_list = {
+                delim_math = {
+                    name = {
+                        { "\\mq",  "\\md" },
+                        { "\\am",  "\\ad" },
+                        { "\\pm",  "\\pd" },
+                        { "\\eqn", "\\eqd" },
+                    }
+                }
+            }
         end
     },
     {
@@ -100,7 +110,26 @@ return {
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         build = "cd app && npm install",
         init = function()
+            vim.g.mkdp_theme = 'light'
             vim.g.mkdp_filetypes = { "markdown" }
+            vim.g.mkdp_preview_options = {
+                katex = {
+                    macros = {
+                        ["\\mq"] = "\\begin{bmatrix}",
+                        ["\\md"] = "\\end{bmatrix}",
+                        ["\\am"] = "\\begin{matrix}",
+                        ["\\ad"] = "\\end{matrix}",
+                        ["\\pm"] = "\\begin{matrix}",
+                        ["\\pd"] = "\\end{matrix}",
+                        ["\\eqn"] = "\\begin{array}{rcl}",
+                        ["\\eqd"] = "\\end{array}",
+                        ["\\RR"] = "\\mathbb{R}",
+                        ["\\grad"] = "\\nabla",
+                        ["\\div"] = "\\nabla \\cdot",
+                        ["\\curl"] = "\\nabla \\times",
+                    }
+                },
+            }
         end,
         ft = { "markdown" },
     },
