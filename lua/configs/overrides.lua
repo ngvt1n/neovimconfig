@@ -16,6 +16,9 @@ M.imgclip = {
 \end{figure}
     ]], ---@type string | fun(context: table): string
     },
+    markdown = {
+      template = "![$LABEL]($FILE_PATH)",
+    }
   },
 }
 
