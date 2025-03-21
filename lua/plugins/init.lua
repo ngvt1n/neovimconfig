@@ -195,11 +195,6 @@ return {
 		config = function(_, opts)
 			require("luasnip").config.set_config(opts)
 			require("nvchad.configs.luasnip")
-			vim.keymap.set(
-				"n",
-				"<Leader>L",
-				'<Cmd>lua   require("luasnip.loaders.from_lua").lazy_load({paths = "./lua/snippetsmath"}) require("luasnip.loaders.from_vscode").lazy_load()  print "Math snippets loaded 👍"<CR>'
-			)
 		end,
 	},
 	{
