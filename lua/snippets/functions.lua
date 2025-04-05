@@ -15,10 +15,6 @@ M.get_visual = function(_, parent)
 		return sn(nil, i(1))
 	end
 end
-M.in_mathzone_markdown = function()
-	-- The `in_mathzone` function requires the Nabla plugin
-	return require("nabla.utils").in_mathzone()
-end
 
 M.cc = { -- types
 	["i"] = "int",
