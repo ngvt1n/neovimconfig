@@ -87,3 +87,23 @@ map("n", "<leader>e", "<cmd>Telescope file_browser<cr>")
 map("n", "<space>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>")
 
 map("n", "<leader>xx", "<CMD>ToggleTask<CR>", { desc = "Toggle task" })
+
+-- unmap("n", "<M-l>")
+-- unmap("n", "<M-h>")
+map("n", "<M-l>", function()
+  local line = vim.fn.getline(".")
+  local line_number = vim.fn.line(".")
+  if line:match("^#+ ") then
+    vim.fn.setline(line_number, "#" .. line)
+  else
+    vim.fn.setline(line_number, "# " .. line)
+  end
+end, { desc = "Append markdown header" })
+
+map("n", "<M-h>", function()
+  local line = vim.fn.getline(".")
+  local line_number = vim.fn.line(".")
+  if line:match("^#+ ") then
+    vim.fn.setline(line_number, line:gsub("^#+ ", ""))
+  end
+end, { desc = "Remove markdown header" })
