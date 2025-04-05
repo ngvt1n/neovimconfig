@@ -8,11 +8,15 @@ local f = ls.function_node
 local fmta = require("luasnip.extras.fmt").fmta
 local utils = require "snippets.functions"
 local in_mathzone = utils.in_mathzone
+local subscript = {
+  ["0"] = "₀", ["1"] = "₁", ["2"] = "₂", ["3"] = "₃", ["4"] = "₄", 
+  ["5"] = "₅", ["6"] = "₆", ["7"] = "₇", ["8"] = "₈", ["9"] = "₉",
+}
 
-return {
+return {}, {
   -- expressions
   s(
-    { trig = "([%a]);", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    { trig = "([%a]);", regTrig = true, wordTrig = false },
     fmta("<>(<>)<>", {
       f(function(_, snip)
         return snip.captures[1]
@@ -23,8 +27,20 @@ return {
     { condition = in_mathzone }
   ),
   s(
-    { trig = "([%a%)%]%}])(%d+)%s", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
-    fmta("<>_<> <>", {
+    { trig = "([%a%)%]%}])(%w)", regTrig = true, wordTrig = false },
+    fmta("<><> ", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      f(function(_, snip)
+        return subscript[snip.captures[2]] or "_" .. snip.captures[2]
+      end),
+    }),
+    { condition = in_mathzone }
+  ),
+  s(
+    { trig = "([%w%)%]%}])'(%w)", regTrig = true, wordTrig = false },
+    fmta("<>^<><>", {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -36,18 +52,20 @@ return {
     { condition = in_mathzone }
   ),
   s(
-    { trig = "([%w%)%]%}])pp", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
-    fmta("<>^{<>} <>", {
+    { trig = "([%w%)%]%}])'(-%d)", regTrig = true, wordTrig = false },
+    fmta("<>^{<>}<>", {
       f(function(_, snip)
         return snip.captures[1]
       end),
-      i(1),
+      f(function(_, snip)
+        return snip.captures[2]
+      end),
       i(0),
     }),
     { condition = in_mathzone }
   ),
   s(
-    { trig = "([%w%)%]%}])ss", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    { trig = "([%w%)%]%}])ss", regTrig = true, wordTrig = false },
     fmta("<>_{<>} <>", {
       f(function(_, snip)
         return snip.captures[1]
@@ -58,17 +76,7 @@ return {
     { condition = in_mathzone }
   ),
   s(
-    { trig = "([%a%)%]%}])00", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
-    fmta("<>_{0} <>", {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      i(0),
-    }),
-    { condition = in_mathzone }
-  ),
-  s(
-    { trig = "(%w+)%s*/%s*(%w+)%s", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    { trig = "(%w+)%s*/%s*(%w+)%s", regTrig = true, wordTrig = false },
     fmta("\\frac{<>}{<>} <>", {
       f(function(_, snip)
         print(vim.inspect(snip.captures))
@@ -82,7 +90,7 @@ return {
     { condition = in_mathzone }
   ),
   s(
-    { trig = "%((.+)%)%s*/%s*(%w+)%s", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    { trig = "%((.+)%)%s*/%s*(%w+)%s", regTrig = true, wordTrig = false },
     fmta("\\frac{<>}{<>} <>", {
       f(function(_, snip)
         print(vim.inspect(snip.captures))
@@ -96,7 +104,7 @@ return {
     { condition = in_mathzone }
   ),
   s(
-    { trig = "(%w+)%s*/%s*%((.+)%)%s", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    { trig = "(%w+)%s*/%s*%((.+)%)%s", regTrig = true, wordTrig = false },
     fmta("\\frac{<>}{<>} <>", {
       f(function(_, snip)
         print(vim.inspect(snip.captures))
@@ -110,7 +118,7 @@ return {
     { condition = in_mathzone }
   ),
   s(
-    { trig = "%((.+)%)%s*/%s*%((.+)%)%s", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    { trig = "%((.+)%)%s*/%s*%((.+)%)%s", regTrig = true, wordTrig = false },
     fmta("\\frac{<>}{<>} <>", {
       f(function(_, snip)
         print(vim.inspect(snip.captures))
@@ -124,32 +132,33 @@ return {
     { condition = in_mathzone }
   ),
   s(
-    { trig = "dint", snippetType = "autosnippet" },
-    fmta("\\int_{<>}^{<>} <> \\,dx <>", { i(1), i(2), i(3), i(0) }),
+    { trig = "dint" },
+    fmta("\\∫_{<>}^{<>} <> \\,dx <>", { i(1), i(2), i(3), i(0) }),
     { condition = in_mathzone }
   ),
   s(
-    { trig = "int", snippetType = "autosnippet" },
-    fmta("\\int <> \\,dx <>", { i(1), i(0) }),
+    { trig = "int" },
+    fmta("\\∫ <> \\,dx <>", { i(1), i(0) }),
     { condition = in_mathzone }
   ),
   s(
-    { trig = "sum", snippetType = "autosnippet" },
-    fmta("\\sum_{<>}^{<>} <>", { i(1), i(2), i(0) }), { condition = in_mathzone }
-  ),
-  s({ trig = "lim", snippetType = "autosnippet" }, fmta("\\lim_{<>} <>", { i(1), i(0) }), { condition = in_mathzone }),
-  s(
-    { trig = "^=", snippetType = "autosnippet" },
-    fmta("\\stackrel{<>}{=} <>", { i(1), i(0) }, { condition = in_mathzone })
+    { trig = "iint" },
+    fmta("\\∬_<> \\,dx <>", { i(1), i(0) }),
+    { condition = in_mathzone }
   ),
   s(
-    { trig = "ff", snippetType = "autosnippet" },
+    { trig = "sum" },
+    fmta("\\∑_{<>}^{<>} <>", { i(1), i(2), i(0) }), { condition = in_mathzone }
+  ),
+  s({ trig = "lim" }, fmta("\\lim_{<>} <>", { i(1), i(0) }), { condition = in_mathzone }),
+  s(
+    { trig = "ff" },
     fmta("\\frac{<>}{<>} <>", { i(1), i(2), i(0) }),
     { condition = in_mathzone }
   ),
-  s({ trig = "rr", snippetType = "autosnippet" }, fmta("\\sqrt{<>} <>", { i(1), i(0) }), { condition = in_mathzone }),
+  s({ trig = "rr" }, fmta("\\sqrt{<>} <>", { i(1), i(0) }), { condition = in_mathzone }),
   s(
-    { trig = "([%w%)%]%}])vv", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    { trig = "([%w%)%]%}])vv", regTrig = true, wordTrig = false },
     fmta("\\vec{<>}<>", {
       f(function(_, snip)
         return snip.captures[1]
@@ -158,8 +167,20 @@ return {
     }),
     { condition = in_mathzone }
   ),
+  s(
+    { trig = "(%w)x(%w)", regTrig = true, wordTrig = false },
+    fmta("<> × <>", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      f(function(_, snip)
+        return snip.captures[2]
+      end),
+    }),
+    { condition = in_mathzone }
+  ),
   -- s(
-  --   { trig = "(%((.*)%)|(%w))%/", regTrig=true, wordTrig=false, snippetType = "autosnippet" },
+  --   { trig = "(%((.*)%)|(%w))%/", regTrig=true, wordTrig=false },
   --   fmta("\\frac{<>}{<>} <>", {
   --     f(function(_, snip)
   --       return snip.captures[1]
@@ -170,23 +191,27 @@ return {
   --   { condition = in_mathzone }
   -- ),
   s(
-    { trig = "|||", snippetType = "autosnippet" },
+    { trig = "|||" },
     fmta("\\bigg|_{<>}^{<>} <>", { i(1), i(2), i(0) }),
     { condition = in_mathzone }
   ),
   -- symbols
-  s({ trig = "set", snippetType = "autosnippet" }, fmta("\\{<>\\} <>", { i(1), i(0) }), { condition = in_mathzone }), -- set
-  s({ trig = "+-", snippetType = "autosnippet" }, t "\\pm", { condition = in_mathzone }),
-  s({ trig = "<=", snippetType = "autosnippet" }, t "\\leqslant", { condition = in_mathzone }),
-  s({ trig = ">=", snippetType = "autosnippet" }, t "\\geqslant", { condition = in_mathzone }),
-  s({ trig = "==", snippetType = "autosnippet" }, t "\\approx", { condition = in_mathzone }),
-  s({ trig = "->", snippetType = "autosnippet" }, t "\\rightarrow", { condition = in_mathzone }),
-  s({ trig = "=>", snippetType = "autosnippet" }, t "\\Rightarrow", { condition = in_mathzone }),
-  s({ trig = "<=>", snippetType = "autosnippet" }, t "\\iff", { condition = in_mathzone }),
-  s({ trig = "ll", snippetType = "autosnippet" }, t "&", { condition = in_mathzone }),
-  s({ trig = "inf", snippetType = "autosnippet" }, t "\\infty", { condition = in_mathzone }),
-  s({ trig = "ee", snippetType = "autosnippet" }, fmta("e^{<>} <>", { i(1), i(0) }), { condition = in_mathzone }),
-  s({ trig = "*", snippetType = "autosnippet" }, t "\\cdot", { condition = in_mathzone }),
-  s({ trig = "RR", snippetType = "autosnippet" }, t "\\mathbb{R}", { condition = in_mathzone }),
+  s({ trig = "set" }, fmta("\\{<>\\} <>", { i(1), i(0) }), { condition = in_mathzone }), -- set
+  s({ trig = "co" }, fmta("[<>]_<>", { i(1), i(0) }), { condition = in_mathzone }), -- set
+  s({ trig = "..." }, t("⋯ "), { condition = in_mathzone }), -- set
+  s({ trig = "v..." }, t("⋮ ")), -- vdots
+  s({ trig = "d..." }, t("⋱ ")), -- ddots
+  s({ trig = "+-" }, t "\\pm", { condition = in_mathzone }),
+  s({ trig = "<=" }, t "\\leqslant", { condition = in_mathzone }),
+  s({ trig = ">=" }, t "\\geqslant", { condition = in_mathzone }),
+  s({ trig = "==" }, t "\\approx", { condition = in_mathzone }),
+  s({ trig = "->" }, t "→ ", { condition = in_mathzone }),
+  s({ trig = "=>" }, t "⇒ ", { condition = in_mathzone }),
+  s({ trig = "ll" }, t "&", { condition = in_mathzone }),
+  s({ trig = "inf" }, t "\\infty", { condition = in_mathzone }),
+  s({ trig = "ee" }, fmta("e^{<>} <>", { i(1), i(0) }), { condition = in_mathzone }),
+  s({ trig = "*" }, t "⋅", { condition = in_mathzone }),
+  s({ trig = "RR" }, t "\\RR", { condition = in_mathzone }),
+  s({ trig = "BB" }, t "\\BB", { condition = in_mathzone }),
   s({ trig = "tag" }, fmta("\\tag^{<>} <>", { i(1), i(0) }), { condition = in_mathzone }),
 }

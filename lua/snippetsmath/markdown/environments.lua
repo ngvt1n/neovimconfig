@@ -13,28 +13,6 @@ local in_mathzone = utils.in_mathzone
 local line_begin = require("luasnip.extras.expand_conditions").line_begin
 
 return {}, {
-  s("mq",
-    fmta("\\begin{bmatrix} <> \\end{bmatrix}<>",
-      { i(1),
-        i(0),
-      }
-    ),
-    { condition = in_mathzone - line_begin }
-  ),
-  s("mq",
-    fmta(
-      [[
-      \begin{bmatrix}
-      <>
-      \end{bmatrix}<>
-      ]],
-      {
-        i(1),
-        i(0),
-      }
-    ),
-    { condition = line_begin * in_mathzone }
-  ),
   s("case",
     fmta(
       [[
@@ -113,4 +91,28 @@ return {}, {
       d(1, get_visual),
     })
   ),
+  s("mq",
+    {
+      t("\\mq "),
+      i(1),
+      t("\\md"),
+      i(0),
+    },
+    { condition = in_mathzone - line_begin }),
+  s("mq",
+    {
+      t({ "\\mq ", "" }),
+      i(1),
+      t({ "", "\\md" }),
+      i(0),
+    },
+    { condition = in_mathzone * line_begin }),
+  s("eqn",
+    {
+      t({ "\\eqn ", "" }),
+      i(1),
+      t({ "", "\\eqd" }),
+      i(0),
+    },
+    { condition = in_mathzone }),
 }
