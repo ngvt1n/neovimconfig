@@ -29,8 +29,8 @@ local options = {
     ["clang-format"] = {
       env = {
         UseTab = "Always",
-        TabWidth = 4,
-        IndentWidth = 4,
+        TabWidth = 8,
+        IndentWidth = 8,
         ColumnLimit = 10,
         -- AlignArrayOfStructures = "Right",
         -- AlignConsecutiveAssignments = "Consecutive",
@@ -38,8 +38,6 @@ local options = {
         AlignAfterOpenBracket = "Align",
         AllowAllArgumentsOnNextLine = true,
         AllowShortCaseExpressionOnASingleLine = true,
-        BinPackArguments = false,
-        BinPackParameters = false,
       },
     },
   },
