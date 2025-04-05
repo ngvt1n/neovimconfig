@@ -225,7 +225,29 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        opts = overrides.treesitter,
+        -- opts = function()
+        --     pcall(function()
+        --         dofile(vim.g.base46_cache .. "syntax")
+        --         dofile(vim.g.base46_cache .. "treesitter")
+        --     end)
+        --     return overrides.treesitter
+        -- end,
+        dependencies = {
+            {
+                "nvim-treesitter/nvim-treesitter-textobjects",
+                config = function(_, _)
+                    pcall(function()
+                        dofile(vim.g.base46_cache .. "syntax")
+                        dofile(vim.g.base46_cache .. "treesitter")
+                    end)
+                    require("nvim-treesitter.configs").setup(overrides.treesitter)
+                end,
+            },
+        },
+        -- config = function(_, opts)
+        --     require("nvim-treesitter.configs").setup(opts)
+        -- end,
+        config = function(_, _) end,
     },
     {
         "nvim-tree/nvim-tree.lua",
