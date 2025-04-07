@@ -9,8 +9,9 @@ local fmta = require("luasnip.extras.fmt").fmta
 local utils = require "snippets.functions"
 local in_mathzone = utils.in_mathzone
 local subscript = {
-  ["0"] = "₀", ["1"] = "₁", ["2"] = "₂", ["3"] = "₃", ["4"] = "₄", 
+  ["0"] = "₀", ["1"] = "₁", ["2"] = "₂", ["3"] = "₃", ["4"] = "₄",
   ["5"] = "₅", ["6"] = "₆", ["7"] = "₇", ["8"] = "₈", ["9"] = "₉",
+  ["a"] = "ₐ",["e"] = "ₑ",["h"] = "ₕ",["k"] = "ₖ",["l"] = "ₗ",["m"] = "ₘ",["n"] = "ₙ",["o"] = "ₒ",["p"] = "ₚ",["r"] = "ᵣ",["s"] = "ₛ",["t"] = "ₜ",["u"] = "ᵤ",["v"] = "ᵥ",["x"] = "ₓ",
 }
 
 return {}, {
@@ -27,13 +28,13 @@ return {}, {
     { condition = in_mathzone }
   ),
   s(
-    { trig = "([%a%)%]%}])(%w)", regTrig = true, wordTrig = false },
-    fmta("<><> ", {
+    { trig = "([%a%)%]%}])(%w) ", regTrig = true, wordTrig = false },
+    fmta("<><>", {
       f(function(_, snip)
         return snip.captures[1]
       end),
       f(function(_, snip)
-        return subscript[snip.captures[2]] or "_" .. snip.captures[2]
+        return subscript[snip.captures[2]] or ("_" .. snip.captures[2])
       end),
     }),
     { condition = in_mathzone }
@@ -210,8 +211,8 @@ return {}, {
   s({ trig = "ll" }, t "&", { condition = in_mathzone }),
   s({ trig = "inf" }, t "\\infty", { condition = in_mathzone }),
   s({ trig = "ee" }, fmta("e^{<>} <>", { i(1), i(0) }), { condition = in_mathzone }),
-  s({ trig = "*" }, t "⋅", { condition = in_mathzone }),
+  s({ trig = "*" }, t "\\cdot", { condition = in_mathzone }),
   s({ trig = "RR" }, t "\\RR", { condition = in_mathzone }),
-  s({ trig = "BB" }, t "\\BB", { condition = in_mathzone }),
+  s({ trig = "BB" }, t "𝔓 ", { condition = in_mathzone }),
   s({ trig = "tag" }, fmta("\\tag^{<>} <>", { i(1), i(0) }), { condition = in_mathzone }),
 }

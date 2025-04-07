@@ -2,10 +2,10 @@ local ls = require "luasnip"
 local s = ls.snippet
 -- local sn = ls.snippet_node
 local t = ls.text_node
--- local i = ls.insert_node
--- local f = ls.function_node
+local i = ls.insert_node
+local f = ls.function_node
 -- local d = ls.dynamic_node
--- local fmta = require("luasnip.extras.fmt").fmta
+local fmta = require("luasnip.extras.fmt").fmta
 -- local rep = require("luasnip.extras").rep
 local utils = require "snippets.functions"
 -- local get_visual = utils.get_visual
@@ -22,8 +22,24 @@ return {
     { condition = in_mathzone }
   ),
 }, {
-  s("and ",
-    t("\\text{ and }"),
+  s(
+    { trig = "$(.*)%s+an_d%s", regTrig = true, wordTrig = false },
+    fmta("$<>$ and $<>", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      i(0),
+    }),
+    { condition = in_mathzone }
+  ),
+  s(
+    { trig = "$(.*)%s+aₙ%sd", regTrig = true, wordTrig = false },
+    fmta("$<>$ and $<>", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      i(0),
+    }),
     { condition = in_mathzone }
   ),
   s("in ",

@@ -10,7 +10,7 @@ M.override = {
   ["@comment"] = { italic = true },
   Identifier = { bold = true },
   ["@markup.heading"] = { bold = true },
-  MatchParen = { fg = "NONE", bg = "one_bg2" },
+  MatchParen = { fg = "NONE", bg = "one_bg2", bold = true },
   MatchParenCur = { fg = "NONE", bg = "one_bg2" },
   MatchWord = { fg = "NONE", bg = "one_bg2" },
   -- MatchParen = { fg = "NONE", bg = "NONE", underline = true },
