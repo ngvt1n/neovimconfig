@@ -18,7 +18,7 @@ end
 
 -- clangd
 lspconfig["clangd"].setup {
-  filetypes = { "java" }, -- Only enable for Java files
+  filetypes = { "java", "c" }, -- Only enable for Java files
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   cmd = {
