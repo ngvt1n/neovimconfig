@@ -27,7 +27,7 @@ return {}, {
     { condition = in_mathzone }
   ),
   s(
-    { trig = "([|∥%)%]%}])(%w)", regTrig = true, wordTrig = false },
+    { trig = "([|%]%}])(%w)", regTrig = true, wordTrig = false },
     fmta("<>_<>", { f(fs), f(fs2), }),
     { condition = in_mathzone }
   ),
@@ -37,12 +37,12 @@ return {}, {
     { condition = in_mathzone }
   ),
   s(
-    { trig = "([|∥%w%)%]%}])'", regTrig = true, wordTrig = false },
+    { trig = "([_|∥%w%)%]%}])'", regTrig = true, wordTrig = false },
     fmta("<>^", { f(fs), }),
     { condition = in_mathzone }
   ),
   s(
-    { trig = "([|∥%w%)%]%}])'(-%d)", regTrig = true, wordTrig = false },
+    { trig = "([|∥%w%)%]%}])^(-%d)", regTrig = true, wordTrig = false },
     fmta("<>^{<>}<>", { f(fs), f(fs2), i(0), }),
     { condition = in_mathzone }
   ),
@@ -72,22 +72,22 @@ return {}, {
   ),
   s(
     { trig = "dint" },
-    fmta("\\∫_{<>}^{<>} <> \\,dx <>", { i(1), i(2), i(3), i(0) }),
+    fmta("∫_{<>}^{<>} <> \\,dx<>", { i(1), i(2), i(3), i(0) }),
     { condition = in_mathzone }
   ),
   s(
     { trig = "int" },
-    fmta("\\∫ <> \\,dx <>", { i(1), i(0) }),
+    fmta("∫ <> \\,dx <>", { i(1), i(0) }),
     { condition = in_mathzone }
   ),
   s(
     { trig = "iint" },
-    fmta("\\∬_<> \\,dx <>", { i(1), i(0) }),
+    fmta("∬_<> \\,dx <>", { i(1), i(0) }),
     { condition = in_mathzone }
   ),
   s(
     { trig = "sum" },
-    fmta("\\∑_{<>}^{<>} <>", { i(1), i(2), i(0) }), { condition = in_mathzone }
+    fmta("∑_{<>}^{<>} <>", { i(1), i(2), i(0) }), { condition = in_mathzone }
   ),
   s({ trig = "lim" }, fmta("\\lim_{<>} <>", { i(1), i(0) }), { condition = in_mathzone }),
   s(
@@ -118,7 +118,7 @@ return {}, {
   -- symbols
   s({ trig = "set" }, fmta("\\{<>\\} <>", { i(1), i(0) }), { condition = in_mathzone }), -- set
   s({ trig = "co" }, fmta("[<>]_<>", { i(1), i(0) }), { condition = in_mathzone }), -- set
-  s({ trig = "no" }, fmta("∥<>∥<>", { i(1), i(0) }), { condition = in_mathzone }), -- set
+  s({ trig = "no" }, fmta("∥ <> ∥<>", { i(1), i(0) }), { condition = in_mathzone }), -- set
   s({ trig = "..." }, t "⋯ ", { condition = in_mathzone }), -- set
   s({ trig = "v..." }, t "⋮ "), -- vdots
   s({ trig = "d..." }, t "⋱ "), -- ddots
@@ -133,11 +133,12 @@ return {}, {
   s({ trig = "\\in" }, t "∈ ", { condition = in_mathzone }),
   s({ trig = "\\forall" }, t "∀ ", { condition = in_mathzone }),
   s({ trig = "\\notin" }, t "∉ ", { condition = in_mathzone }),
-  s({ trig = ",," }, t "&", { condition = in_mathzone }),
+  s({ trig = ",,", wordTrig = false }, t "&", { condition = in_mathzone }),
   s({ trig = "inf" }, t "\\infty", { condition = in_mathzone }),
   s({ trig = "ee" }, fmta("e^{<>} <>", { i(1), i(0) }), { condition = in_mathzone }),
   s({ trig = "*" }, t "⋅", { condition = in_mathzone }),
   s({ trig = "RR" }, t "\\RR", { condition = in_mathzone }),
-  s({ trig = "BB" }, t "𝔓 ", { condition = in_mathzone }),
+  s({ trig = "BB", wordTrig = false }, t "𝔓 "),
+  s({ trig = "UU", wordTrig = false }, t "𝔘 "),
   s({ trig = "tag" }, fmta("\\tag^{<>} <>", { i(1), i(0) }), { condition = in_mathzone }),
 }
