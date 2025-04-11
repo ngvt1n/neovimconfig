@@ -117,6 +117,4 @@
   (#any-of? @character.special "&ensp;" "&emsp;")
   (#set! conceal " "))
 
-((latex_block)) @markup.italic
-
-((latex_block)) @markup.italic
+((latex_block)) @keyword.return
