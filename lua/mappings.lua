@@ -107,3 +107,5 @@ map("n", "<M-h>", function()
     vim.fn.setline(line_number, line:gsub("^#+ ", ""))
   end
 end, { desc = "Remove markdown header" })
+
+map("i", "<M-s>", vim.lsp.buf.signature_help, { desc = "Show signature help"})
