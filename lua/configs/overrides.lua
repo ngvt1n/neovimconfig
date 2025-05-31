@@ -123,8 +123,8 @@ M.peek = {
 
 M.copilotchat = {
   debug = false,
-  question_header = "**>**",
-  answer_header = "**<**",
+  question_header = ">",
+  answer_header = "<",
   error_header = "**!!!**",
   separator = " ",
 
@@ -138,6 +138,7 @@ M.copilotchat = {
   --   layout = "float",
   --   border = "rounded",
   -- },
+  model = 'gpt-4o'
 }
 
 M.copilot = {
