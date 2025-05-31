@@ -59,19 +59,6 @@ return {
 			})
 		end,
 	},
-	{
-		"smoka7/hop.nvim",
-		version = "*",
-		cmd = { "HopWord", "HopLine", "HopLineStart", "HopWordCurrentLine" },
-		opts = { keys = "etovxqpdygfblzhckisuran" },
-		init = function()
-			local map = vim.keymap.set
-			map("n", "<leader>ww", "<CMD> HopWord <CR>", { desc = "Hint all words" })
-			-- map("n", "<leader><leader>t", "<CMD> HopNodes <CR>", { desc = "Hint Tree" })
-			-- map("n", "<leader><leader>c", "<CMD> HopLineStart<CR>", { desc = "Hint Columns" })
-			-- map("n", "<leader><leader>l", "<CMD> HopWordCurrentLine<CR>", { desc = "Hint Line" })
-		end,
-	},
 	{ "mfussenegger/nvim-jdtls", config = overrides.jdtls },
 	{ "seandewar/killersheep.nvim", cmd = "KillKillKill" },
 	{ "seandewar/nvimesweeper", cmd = "Nvimesweeper" },
