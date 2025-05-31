@@ -39,7 +39,7 @@ lspconfig["lua_ls"].setup {
 }
 -- clangd
 lspconfig["clangd"].setup {
-  filetypes = { "java", "c" }, -- Only enable for Java files
+  filetypes = { "c" },   -- Only enable for C files
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   cmd = {
