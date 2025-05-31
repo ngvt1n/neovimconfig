@@ -6,7 +6,7 @@ local M = {}
 
 ---@type Base46HLGroupsList
 M.override = {
-  Comment = { italic = true },
+  Comment = { italic = true, fg="grey" },
   ["@comment"] = { italic = true },
   Identifier = { bold = true },
   ["@markup.heading"] = { bold = true },
@@ -16,8 +16,8 @@ M.override = {
   -- MatchParen = { fg = "NONE", bg = "NONE", underline = true },
   -- MatchParenCur = { fg = "NONE", bg = "NONE", underline = true },
   -- MatchWord = { fg = "NONE", bg = "NONE", underline = true },
-  ["@markup.strong"] = { fg = "red", bold = true },
-  ["@markup.italic"] = { fg = "yellow", italic = true },
+  ["@markup.strong"] = { fg = "white", bold = true },
+  ["@markup.italic"] = { fg = "white", italic = true },
   ["@markup.strikethrough"] = { underline = true, italic = true, fg = "red" },
   --
   St_InsertmodeText = { bold = true },
@@ -57,18 +57,19 @@ M.add = {
 
   ["@string.special.url.html"] = { fg = "blue" },
   -- rainbow headers
-  ["@markup.heading.1.markdown"] = { fg = "red", bold = true },
-  ["@markup.heading.2.markdown"] = { fg = "orange", bold = true },
-  ["@markup.heading.3.markdown"] = { fg = "yellow", bold = true },
-  ["@markup.heading.4.markdown"] = { fg = "green", bold = true },
-  ["@markup.heading.5.markdown"] = { fg = "blue", bold = true },
-  ["@markup.link.label.markdown_inline"] = { fg = "yellow" },
-  ["@lsp.type.class.markdown"] = { fg = "yellow" },
-  ["@markup.link.url.markdown_inline"] = { italic = true, fg = "cyan", underline = false },
-  ["@markup.heading.6.markdown"] = { fg = "purple", bold = true },
+  ["@markup.heading.1.markdown"] = { fg = "white", bold = true },
+  ["@markup.heading.2.markdown"] = { fg = "white", bold = true },
+  ["@markup.heading.3.markdown"] = { fg = "white", bold = true },
+  ["@markup.heading.4.markdown"] = { fg = "white", bold = true },
+  ["@markup.heading.5.markdown"] = { fg = "white", bold = true },
+  ["@markup.heading.6.markdown"] = { fg = "white", bold = true },
+  ["@markup.link.label.markdown_inline"] = { fg = "grey", italic = true },
+  ["@markup.link.markdown_inline"] = { fg = "grey" },
+  ["@markup.link.url.markdown_inline"] = { italic = true, fg = "grey", underline = false },
   ["@punctuation.delimiter.markdown_inline"] = { fg = "grey_fg" },
-  ["@conceal.markdown_inline"] = { fg = "grey_fg" },
   ["@punctuation.special.markdown"] = { fg = "cyan" },
+  ["@conceal.markdown_inline"] = { fg = "grey_fg" },
+  ["@lsp.type.class.markdown"] = { fg = "yellow" },
   markdownRule = { fg = "cyan" },
   markdownCodeblock = { fg = "orange" },
   markdownCodeDelimiter = { fg = "vibrant_green" },
@@ -87,7 +88,7 @@ M.add = {
   St_CopilotDisabled = { bg = "black", fg = "red" },
   CmpItemKindCopilot = { bg = "vibrant_green", fg = "black" },
   DiagnosticUnnecessary = { fg = "purple", italic = true },
-  -- IblIndent = { fg = "one_bg" },
+  IblScope = { fg = "light_grey" },
   CursorLine = { bg = "white" },
 }
 
