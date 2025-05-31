@@ -1,6 +1,6 @@
 local M = {}
 local utils = require "ui.stl.utils"
-local separator_style = "default"
+local separator_style = "round"
 local sep_l = utils.separators[separator_style]["left"]
 local sep_r = utils.separators[separator_style]["right"]
 
@@ -25,12 +25,12 @@ M.statusline.modules = {
     local m = vim.api.nvim_get_mode().mode
     local current_mode = "%#St_" .. modes[m][2] .. "Mode# " .. modes[m][1]
     local mode_sep1 = "%#St_" .. modes[m][2] .. "ModeSep#" .. sep_r
-    return current_mode .. " " .. mode_sep1 .. "%#ST_EmptySpace#" .. sep_r
+    return current_mode .. mode_sep1 .. "%#ST_EmptySpace#" .. sep_r
   end,
   file = function()
     local x = utils.file()
     local name = x[2] .. (separator_style == "default" and " " or "")
-    return "%#St_file# " .. x[1] .. name .. "%#St_file_sep#" .. sep_r
+    return "%#St_file# " .. name .. "%#St_file_sep#" .. sep_r
   end,
   lsp = function()
     if rawget(vim, "lsp") and vim.version().minor >= 10 then
