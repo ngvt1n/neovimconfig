@@ -85,7 +85,7 @@ unmap("n", "<leader>v")
 map("n", "<leader>e", "<cmd>Telescope file_browser<cr>")
 map("n", "<space>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>")
 
-map("n", "<leader>xx", "<CMD>ToggleTask<CR>", { desc = "Toggle task" })
+map("n", "<leader>v", "<CMD>ToggleTask<CR>", { desc = "Toggle task" })
 
 -- unmap("n", "<M-l>")
 -- unmap("n", "<M-h>")
