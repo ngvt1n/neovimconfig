@@ -230,4 +230,22 @@ return {
 		"folke/which-key.nvim",
 		enabled = false,
 	},
+  -- {
+  --   "folke/lazydev.nvim",
+  --   ft = "lua", -- only load on lua files
+  --   opts = {
+  --     runtime = "?.lua;?/init.lua;C:/Users/tinnguyen/AppData/Roaming/luarocks/share/lua/5.4/?.lua;C:/Users/tinnguyen/AppData/Roaming/luarocks/share/lua/5.4/?/init.lua",
+  --     library = {
+  --       vim.fn.expand '~/luarocks/share/lua/5.4',
+  --       {
+  --         path = "C:/Users/tinnguyen/AppData/Local/nvim-data/mason/packages/lua-language-server/meta/3rd/busted/",
+  --         words = { "describe" },
+  --       },
+  --       { path = "C:/Users/tinnguyen/AppData/Local/nvim-data/mason/packages/lua-language-server/meta/3rd/luassert/library",
+  --         words = { "describe" },
+  --       },
+  --       { path = "${3rd}/love/library", words = { "love" } },
+  --     },
+  --   },
+  -- },
 }

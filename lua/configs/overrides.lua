@@ -420,6 +420,7 @@ M.cmp = {
       end
     end, { "i", "s" }),
   },
+        { name = "lazydev", group_index = 0 },
 }
 
 M.cmpcpp = {
