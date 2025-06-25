@@ -31,8 +31,8 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
 })
 
 autocmd("BufEnter", {
-    pattern = "*",
-    callback = function ()
-        vim.opt.formatoptions:remove('cro')
-    end
+  pattern = "*",
+  callback = function()
+    vim.opt.formatoptions:remove('cro')
+  end
 })

@@ -4,9 +4,8 @@ local t = ls.text_node
 
 return {
   s("comment", {
-    t({"/* "}),
+    t({ "/* " }),
     ls.insert_node(1),
-    t({" */"}),
+    t({ " */" }),
   })
 }
-

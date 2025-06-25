@@ -39,16 +39,16 @@ map("n", "dac", "V%d", { desc = "Delete comment" })
 
 -- markdown
 map("v", "<leader>b", function()
-	local start_pos = vim.fn.getpos("'<")
-	local end_pos = vim.fn.getpos("'>")
-	vim.cmd('normal! "zy')
-	local selected = vim.fn.getreg("z")
-	local trimmed = vim.trim(selected)
-	local bold_text = "**" .. trimmed .. "**" .. (selected == trimmed and "" or " ")
-	vim.fn.setreg("z", bold_text)
-	vim.cmd('normal! gv"zp')
-	vim.fn.setpos("'<", start_pos)
-	vim.fn.setpos("'>", end_pos)
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+  vim.cmd('normal! "zy')
+  local selected = vim.fn.getreg("z")
+  local trimmed = vim.trim(selected)
+  local bold_text = "**" .. trimmed .. "**" .. (selected == trimmed and "" or " ")
+  vim.fn.setreg("z", bold_text)
+  vim.cmd('normal! gv"zp')
+  vim.fn.setpos("'<", start_pos)
+  vim.fn.setpos("'>", end_pos)
 end, { desc = "Bold selected text in markdown" })
 
 -- other mappings
@@ -67,7 +67,7 @@ map("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Terminal go up" })
 map("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal go left" })
 map("t", "<C-n>", "<C-\\><C-n>", { desc = "Exit terminal mode", nowait = true })
 map("t", "<Esc>", function() -- workaround for normal-terminal mode
-	vim.cmd("q")
+  vim.cmd("q")
 end, { desc = "Close terminal" })
 
 --- remove default mappings
@@ -107,6 +107,6 @@ map("n", "<M-h>", function()
   end
 end, { desc = "Remove markdown header" })
 
-map("i", "<M-s>", vim.lsp.buf.signature_help, { desc = "Show signature help"})
+map("i", "<M-s>", vim.lsp.buf.signature_help, { desc = "Show signature help" })
 
 unmap("i", "<C-w>")

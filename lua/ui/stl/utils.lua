@@ -47,13 +47,13 @@ M.modes = {
   ["nt"] = { "N-端末", "NTerminal" },
   ["ntT"] = { "NTERMINAL (ntT)", "NTerminal" },
 
-  ["v"] = {  "(■ •ㅅ•)■ ", "Visual" },
+  ["v"] = { "(■ •ㅅ•)■ ", "Visual" },
   ["vs"] = { "(■ •ㅅ•)■ -CHAR (Ctrl O)", "Visual" },
-  ["V"] = {  "(■ -ㅅ-)■ ", "Visual" },
+  ["V"] = { "(■ -ㅅ-)■ ", "Visual" },
   -- ["Vs"] = { "(⊃--)⊃", "Visual" },
   -- [""] = { "[⊃--]⊃", "Visual" },
 
-  ["i"] =  { "(❀ •؎ •)φ", "Insert" },
+  ["i"] = { "(❀ •؎ •)φ", "Insert" },
   ["ic"] = { "(❀ •؎ •)φ", "Insert" },
   ["ix"] = { "(❀ •؎ •)φ", "Insert" },
 

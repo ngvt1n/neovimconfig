@@ -6,7 +6,7 @@ local M = {}
 
 ---@type Base46HLGroupsList
 M.override = {
-  Comment = { italic = true, fg="grey" },
+  Comment = { italic = true, fg = "grey" },
   ["@comment"] = { italic = true },
   Identifier = { bold = true },
   ["@markup.heading"] = { bold = true },

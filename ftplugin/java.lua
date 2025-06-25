@@ -2,7 +2,7 @@
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 local workspace_dir = "C:/Users/tinnguyen/Documents/notes/courses/cscolby-lab/cs231-lab/w4/w4extension-jddata/"
-  .. project_name
+    .. project_name
 
 local processing_dir = "C:/Program Files/processing-4.3/core/library/core.jar"
 
@@ -123,9 +123,9 @@ vim.api.nvim_create_user_command("JavaRun", function()
     cmd = function()
       vim.cmd "w"
       return "javac "
-        .. vim.fn.expand "%:r"
-        .. ".java && java "
-        .. vim.fn.expand "%:r"
+          .. vim.fn.expand "%:r"
+          .. ".java && java "
+          .. vim.fn.expand "%:r"
     end,
   }
 end, {})
@@ -137,12 +137,12 @@ vim.api.nvim_create_user_command("ProcessingRunSketch", function()
     cmd = function()
       vim.cmd "w"
       return 'javac -cp ".;'
-        .. processing_dir
-        .. '" *.java && java -cp ".;'
-        .. processing_dir
-        .. '" '
-        .. project_name
-        .. " && Invoke-Command -ScriptBlock { Exit }"
+          .. processing_dir
+          .. '" *.java && java -cp ".;'
+          .. processing_dir
+          .. '" '
+          .. project_name
+          .. " && Invoke-Command -ScriptBlock { Exit }"
     end,
   }
 end, {})

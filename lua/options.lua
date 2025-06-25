@@ -27,7 +27,7 @@ g.matchup_motion_enabled = 0
 g.matchup_matchparen_fallback = 0
 g.matchup_matchparen_offscreen = "popup"
 
-vim.cmd([[ 
+vim.cmd([[
     augroup matchup_matchparen_disable_ft
       autocmd!
       autocmd FileType lazy,help let [b:matchup_matchparen_fallback,
@@ -43,9 +43,9 @@ o.shellxquote = ""
 
 new_cmd("Time", 'echo strftime("%F %X")', {})
 new_cmd(
-	"Todo",
-	":e C:/Users/tinnguyen/Documents/Code/Projects/homepage/markdowns/i-passi-della-conquista-del-mondo.md",
-	{}
+  "Todo",
+  ":e C:/Users/tinnguyen/Documents/Code/Projects/homepage/markdowns/i-passi-della-conquista-del-mondo.md",
+  {}
 )
 new_cmd("Codethings", ":e C:/Users/tinnguyen/Documents/Code/Projects/homepage/markdowns/code.md", {})
 new_cmd("Calendar", ":e C:/Users/tinnguyen/Documents/Code/Projects/homepage/markdowns/calendario.md", {})
@@ -54,18 +54,18 @@ new_cmd("WhereAmICopy", ':lua vim.fn.setreg("*", vim.fn.expand("%:p:h"))', {})
 new_cmd("NablaToggle", 'lua require("nabla").toggle_virt()', {})
 new_cmd("Peek", ':lua require("peek").open()<CR>', {})
 new_cmd("ToggleTask", function()
-	local line = vim.api.nvim_get_current_line()
-	if line:match("^%s*%[ %]") then
-		-- If it's an unchecked task, mark it as checked
-		line = line:gsub("%[ %]", "[x]")
-	elseif line:match("^%s*%[x%]") then
-		-- If it's a checked task, mark it as unchecked
-		line = line:gsub("%[x%]", "[ ]")
-	else
-		-- If it's not a task, turn it into an unchecked task
-		line = "[ ] " .. line
-	end
-	vim.api.nvim_set_current_line(line)
+  local line = vim.api.nvim_get_current_line()
+  if line:match("^%s*%[ %]") then
+    -- If it's an unchecked task, mark it as checked
+    line = line:gsub("%[ %]", "[x]")
+  elseif line:match("^%s*%[x%]") then
+    -- If it's a checked task, mark it as unchecked
+    line = line:gsub("%[x%]", "[ ]")
+  else
+    -- If it's not a task, turn it into an unchecked task
+    line = "[ ] " .. line
+  end
+  vim.api.nvim_set_current_line(line)
 end, {})
 
 -- lua snippets

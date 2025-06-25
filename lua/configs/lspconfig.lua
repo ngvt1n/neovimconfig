@@ -36,7 +36,7 @@ vim.lsp.enable "lua_ls"
 
 -- clangd
 vim.lsp.config("clangd", {
-  filetypes = { "c" },   -- Only enable for C files
+  filetypes = { "c" }, -- Only enable for C files
   cmd = {
     "clangd",
     "--header-insertion=never",
