@@ -54,10 +54,10 @@ M.modes = {
   -- [""] = { "[⊃--]⊃", "Visual" },
 
   ["i"] =  { "(❀ •؎ •)φ", "Insert" },
-  ["ic"] = { "(❀ •؎ •)φ (completion)", "Insert" },
-  ["ix"] = { "(❀ •؎ •)φ completion", "Insert" },
+  ["ic"] = { "(❀ •؎ •)φ", "Insert" },
+  ["ix"] = { "(❀ •؎ •)φ", "Insert" },
 
-  ["t"] = { "端末", "Terminal" },
+  ["t"] = { "[■ -ㅅ-]■", "Terminal" },
 
   ["R"] = { "REPLACE", "Replace" },
   ["Rc"] = { "REPLACE (Rc)", "Replace" },
