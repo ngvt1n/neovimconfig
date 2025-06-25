@@ -108,3 +108,5 @@ map("n", "<M-h>", function()
 end, { desc = "Remove markdown header" })
 
 map("i", "<M-s>", vim.lsp.buf.signature_help, { desc = "Show signature help"})
+
+unmap("i", "<C-w>")
