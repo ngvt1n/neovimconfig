@@ -52,7 +52,6 @@ map("v", "<leader>b", function()
 end, { desc = "Bold selected text in markdown" })
 
 -- other mappings
-map("n", "<leader>th", "<cmd>lua require('base46').toggle_theme()<cr>", { desc = "Toggle theme" })
 
 -- terminal mappings
 -- map({ "n" }, "<leader>v", function()
