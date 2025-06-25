@@ -1,57 +1,44 @@
 -- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
-local lspconfig = require "lspconfig"
-
--- EXAMPLE
 local servers = { "html", "cssls", "ts_ls", "pyright", "glsl_analyzer" }
-local nvlsp = require "nvchad.configs.lspconfig"
+vim.lsp.enable(servers)
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  }
-end
-
-lspconfig["lua_ls"].setup {
-  on_attach = nvlsp.on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
       checkThirdParty = false,
       telemetry = { enable = false },
-      diagnostics = {
-        globals = { "vim" },
+      runtime = {
+        path = {
+          '?.lua',
+          '?/init.lua',
+          -- 'lua/?.lua',
+          -- 'lua/?/init.lua',
+          -- '?/lua/?.lua',
+          -- '?/lua/?/init.lua',
+        }
       },
       workspace = {
         library = {
-          "C:/Users/tinnguyen/Documents/notes/sketches/love2d/3rd/love2d/library",
+          -- vim.fn.stdpath "data" .. "/lazy/NvChad/lua/nvchad",
+          vim.env.VIMRUNTIME,
+          vim.fn.expand '~/luarocks/share/lua/5.4',
+          vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types",
+          'C:/Users/tinnguyen/AppData/Local/nvim-data/mason/packages/lua-language-server/meta/3rd/busted/library/',
+          'C:/Users/tinnguyen/AppData/Local/nvim-data/mason/packages/lua-language-server/meta/3rd/luassert/library/'
         },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
       },
     },
   },
-}
+})
+vim.lsp.enable "lua_ls"
+
 -- clangd
-lspconfig["clangd"].setup {
+vim.lsp.config("clangd", {
   filetypes = { "c" },   -- Only enable for C files
-  on_attach = nvlsp.on_attach,
-  on_init = nvlsp.on_init,
   cmd = {
     "clangd",
     "--header-insertion=never",
   },
-  capabilities = {
-    textDocument = {
-      completion = {
-        editsNearCursor = false,
-      },
-    },
-    offsetEncoding = { "utf-16" },
-  },
-}
+})
