@@ -1,6 +1,29 @@
 local overrides = require("configs.overrides")
 return {
   {
+    'nvim-mini/mini.ai',
+    version = '*',
+    event = "User FilePost",
+    config = function()
+      local spec_treesitter = require('mini.ai').gen_spec.treesitter
+      require('mini.ai').setup({
+        custom_textobjects = {
+          F = spec_treesitter({
+            a = { '@function.outer' },
+            i = { '@function.inner' },
+          }),
+          m = {'%$().-()%$', '^.().*().$'},
+          M = {
+            {
+              '%f[$]%s*%$%$\r?\n().-[%s%S]-()\r?\n%s*%$%$%f[^$]', -- around (a)
+              '^%s*%$%$\r?\n().-[%s%S]-()\r?\n%s*%$%$'
+            },
+          }
+        },
+      })
+    end
+  },
+  {
     "HakonHarnes/img-clip.nvim",
     event = "VeryLazy",
     opts = overrides.imgclip,

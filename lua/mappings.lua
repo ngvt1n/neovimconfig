@@ -10,8 +10,7 @@ map("n", ";", ":", { desc = "Enter command mode", nowait = true })
 map("n", "<leader>wo", "<cmd> Telescope workspaces <CR>", { desc = "Open workspace" })
 map("n", "j", "gj")
 map("n", "k", "gk")
-map({ "n", "v" }, "]]", "]m")
-map({ "n", "v" }, "[[", "[m")
+-- unmap({ "n", "v" }, "[[")
 
 -- editing mappings
 map({ "n", "v", "i" }, "<C-Left>", "<cmd>tabn<cr>", { desc = "Next tab" })
@@ -84,3 +83,7 @@ unmap("n", "<leader>v")
 --- redefine default mappings
 map("n", "<leader>e", "<cmd>Telescope file_browser<cr>")
 map("n", "<space>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>")
+map("n", "))", "<CMD>lua require('mini.ai').move_cursor('left', 'a', 'm', {search_method='next'})<CR>")
+map("n", "((", "<CMD>lua require('mini.ai').move_cursor('left', 'a', 'm', {search_method='prev'})<CR>")
+map("n", "}}", "<CMD>lua require('mini.ai').move_cursor('left', 'a', 'M', {search_method='next'})<CR>")
+map("n", "{{", "<CMD>lua require('mini.ai').move_cursor('left', 'a', 'M', {search_method='prev'})<CR>")
