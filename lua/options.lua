@@ -13,6 +13,14 @@ o.tabstop = 2
 o.fileformat = "unix"
 -- o.number = false
 
+if vim.fn.has("win64") then
+  o.shell        = "pwsh.exe"
+  o.shellcmdflag = '-NoLogo -NonInteractive -c'
+  o.shellredir   = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+  o.shellpipe    = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
+  o.shellquote   = ""
+  o.shellxquote  = ""
+end
 g.vimtex_imaps_enabled = 0
 
 g.loaded_matchparen = 1
