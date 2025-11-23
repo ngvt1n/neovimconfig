@@ -132,11 +132,18 @@ return {
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = "cd app && npm install",
+    build = "cd app && npm install && git restore .",
     init = function()
+      vim.g.mkdp_auto_close = 0;
+      vim.g.mkdp_markdown_css = vim.fn.expand('~/Documents/notes/markdown.css')
+      -- vim.g.mkdp_combine_preview = 1;
+      -- vim.g.mkdp_combine_preview_auto_refresh = 1;
       vim.g.mkdp_theme = 'light'
       vim.g.mkdp_filetypes = { "markdown" }
       vim.g.mkdp_preview_options = {
+        -- disable_sync_scroll = 1,
+        disable_sync_scroll = 1,
+        content_editable = true,
         katex = {
           macros = {
             ["\\mq"] = "\\begin{bmatrix}",
