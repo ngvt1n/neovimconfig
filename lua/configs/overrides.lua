@@ -271,10 +271,16 @@ M.blankline = {
 local cmp = require("cmp")
 M.cmp = {
   sources = {
+    {
+      name = "buffer",
+      option = {
+        keyword_pattern = [==[\\\?\%([^ ()&$,*{}\\]\+\)\%(\({[^{}]*}\)\|[^ ()$,*{}\\]*\)*]==],
+        -- `[[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%([\-.]\w*\)*\)]]`
+      }
+    },
     { name = "luasnip" },
     { name = "copilot" },
     { name = "nvim_lsp" },
-    { name = "buffer" },
     { name = "nvim_lua" },
     { name = "path" },
   },
