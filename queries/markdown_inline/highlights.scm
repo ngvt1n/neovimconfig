@@ -1,3 +1,5 @@
+((latex_block)) @markup.italic
+
 ; From MDeiml/tree-sitter-markdown
 (code_span) @markup.raw @nospell
 
@@ -10,10 +12,11 @@
 (shortcut_link
   (link_text) @nospell)
 
-[
+([
   (backslash_escape)
   (hard_line_break)
 ] @string.escape
+(#set! priority 50)) ; Set a lower priority
 
 ; Conceal codeblock and text style markers
 ([
@@ -117,4 +120,3 @@
   (#any-of? @character.special "&ensp;" "&emsp;")
   (#set! conceal " "))
 
-((latex_block)) @keyword.return
