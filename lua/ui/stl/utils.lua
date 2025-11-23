@@ -51,7 +51,7 @@ M.modes = {
   ["vs"] = { "視覚-CHAR (Ctrl O)", "Visual" },
   ["V"] = { "視覚-LINE", "Visual" },
   ["Vs"] = { "視覚-LINE", "Visual" },
-  [""] = { "視覚-BLOCK", "Visual" },
+  ["\22"] = { "視覚-BLOCK", "Visual" },
 
   ["i"] = { "入力", "Insert" },
   ["ic"] = { "入力 (completion)", "Insert" },
