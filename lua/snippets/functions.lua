@@ -17,7 +17,7 @@ M.get_visual = function(_, parent)
 end
 M.in_mathzone = function()
     local file_ext = vim.fn.expand('%:e')
-    return (file_ext == "md") and require("nabla.utils").in_mathzone() or vim.fn['vimtex#syntax#in_mathzone']() == 1
+    return (file_ext == "md") and require("nabla.utils").in_mathzone()
 end
 
 M.cc = { -- types
