@@ -20,12 +20,16 @@ M.autopairs = {
 }
 
 M.imgclip = {
+  dir_path = function ()
+    return vim.fn.expand("%:p:h") .. "/assets/"
+  end,
   extension = "jpg", ---@type string | fun(): string
+  file_name = "%Y-%m-%d-%H-%M-%S", ---@type string | fun(): string
   relative_to_current_file = true, ---@type boolean | fun(): boolean
   use_cursor_in_template = false,
   insert_mode_after_paste = false,
+  prompt_for_file_name = false, ---@type boolean | fun(): boolean
 
-  show_dir_path_in_prompt = true,
   filetypes = {
     tex = {
       template = [[
