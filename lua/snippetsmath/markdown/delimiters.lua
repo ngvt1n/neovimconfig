@@ -16,23 +16,14 @@ local line_begin = require("luasnip.extras.expand_conditions").line_begin
 
 M = {}
 N = {
-  s("left()",
-    fmta("\\left( <>\\right)<>", {
-      i(1),
-      i(0),
-    }),
-    { condition = in_mathzone }
-  ),
-  s("left[]",
-    fmta("\\left[ <>\\right]<>", {
-      i(1),
-      i(0),
-    }),
-    { condition = in_mathzone }
-  ),
-  s("left{}",
-    fmta("\\left{ <>\\right}<>", {
-      i(1),
+  s("lr()",
+    fmta("<><>", {
+      c(1, {
+        sn(nil, { t "\\left(", i(1), t "\\right)" }),
+        sn(nil, { t "\\left[", i(1), t "\\right]" }),
+        sn(nil, { t "\\left{", i(1), t "\\right}" }),
+        sn(nil, { t "\\left|", i(1), t "\\right|" }),
+      }),
       i(0),
     }),
     { condition = in_mathzone }
