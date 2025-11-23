@@ -16,8 +16,7 @@ local fs = function(_, snip)
 end
 
 return {
-  s("exists", t("\\exists"), { condition = in_mathzone }),
-  s("ang", t("∠ "), { condition = in_mathzone }),
+  s("pagebreak", t("<div style='page-break-after: always;'></div>"), { show_condition = in_mathzone }),
 }, {
   s("tt",
     fmta("\\text{<>}<>", { i(1), i(0) }), { condition = in_mathzone }),

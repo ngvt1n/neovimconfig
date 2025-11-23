@@ -30,9 +30,9 @@ return {}, {
   s("all",
     fmta(
       [[
-      \begin{aligned}
+      \al
       <>
-      \end{aligned}<>
+      \la <>
       ]],
       {
         i(1),
