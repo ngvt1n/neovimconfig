@@ -146,6 +146,8 @@ return {
         content_editable = true,
         katex = {
           macros = {
+            ["\\al"] = "\\begin{aligned}",
+            ["\\la"] = "\\end{aligned}",
             ["\\mq"] = "\\begin{bmatrix}",
             ["\\md"] = "\\end{bmatrix}",
             ["\\am"] = "\\begin{matrix}",
@@ -155,10 +157,14 @@ return {
             ["\\eqn"] = "\\begin{array}{rcl}",
             ["\\eqd"] = "\\end{array}",
             ["\\RR"] = "\\mathbb{R}",
+            ["\\ZZ"] = "\\mathbb{Z}",
+            ["\\NN"] = "\\mathbb{N}",
             ["\\BB"] = "\\mathfrak{B}",
             ["\\grad"] = "\\nabla",
             ["\\div"] = "\\nabla \\cdot",
             ["\\curl"] = "\\nabla \\times",
+            ["\\union"] = "\\cup",
+            ["\\del"] = "\\nabla",
           }
         },
       }
