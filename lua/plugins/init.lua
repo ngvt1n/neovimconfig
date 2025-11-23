@@ -246,7 +246,7 @@ return {
       npairs.setup(opts)
       npairs.add_rule(rule("$", "$", { "md", "markdown" })) -- for deleting
       npairs.add_rule(rule("∥", "∥", { "md", "markdown" })) -- for deleting
-      npairs.get_rules('[')[1].not_filetypes = { "markdown_inline", "markdown" }
+      -- npairs.get_rules('[')[1].not_filetypes = { "markdown_inline", "markdown" }
       npairs.get_rules("'")[1].not_filetypes = { "markdown_inline", "markdown" }
       -- setup cmp for autopairs
       local cmp_autopairs = require "nvim-autopairs.completion.cmp"
