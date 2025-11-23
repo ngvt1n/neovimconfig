@@ -20,7 +20,7 @@ M.autopairs = {
 }
 
 M.imgclip = {
-  dir_path = function ()
+  dir_path = function()
     return vim.fn.expand("%:p:h") .. "/assets/"
   end,
   extension = "jpg", ---@type string | fun(): string
