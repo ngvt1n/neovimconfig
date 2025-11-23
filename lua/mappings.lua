@@ -83,6 +83,10 @@ unmap("n", "<leader>v")
 --- redefine default mappings
 map("n", "<leader>e", "<cmd>Telescope file_browser<cr>")
 map("n", "<space>fb", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>")
+
+map("i", "<C-n>", "<Plug>luasnip-next-choice", {})
+map("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
+
 map("n", "))", "<CMD>lua require('mini.ai').move_cursor('left', 'a', 'm', {search_method='next'})<CR>")
 map("n", "((", "<CMD>lua require('mini.ai').move_cursor('left', 'a', 'm', {search_method='prev'})<CR>")
 map("n", "}}", "<CMD>lua require('mini.ai').move_cursor('left', 'a', 'M', {search_method='next'})<CR>")
