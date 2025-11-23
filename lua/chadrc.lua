@@ -11,13 +11,13 @@ M = {
     statusline = overrides.statusline,
     tabufline = overrides.tabufline,
     cmp = {
-      -- style = "atom_colored", -- default/flat_light/flat_dark/atom/atom_colored
+      style = "atom", -- default/flat_light/flat_dark/atom/atom_colored
       icons = true,
       icons_left = true,
     },
     telescope = { style = "borderless" },
   },
-  cheatsheet = { theme = "grid" },
+  cheatsheet = { theme = "simple" },
   colorify = {
     enabled = true,
     mode = "virtual", -- fg, bg, virtual
