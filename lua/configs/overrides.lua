@@ -420,14 +420,13 @@ M.cmp = {
       end
     end, { "i", "s" }),
   },
-  { name = "lazydev", group_index = 0 },
 }
 
 M.cmpcpp = {
   sources = {
     { name = "luasnip", priority = "1000000" },
     { name = "buffer" },
-    { name = "path" },
+    { name = "async_path" },
   },
 }
 
