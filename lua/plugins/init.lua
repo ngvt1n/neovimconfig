@@ -175,11 +175,7 @@ return {
     "L3MON4D3/LuaSnip",
     dependencies = {
       { "rafamadriz/friendly-snippets",     enabled = false },
-      {
-        name="friendly-snippets.nvim",
-        dir="~/AppData/Local/nvim-data/lazy/friendly-snippets.nvim/",
-        dev = true,
-      },
+      { "ghostfish0/friendly-snippets.nvim" },
     },
     opts = {
       enable_autosnippets = true,
