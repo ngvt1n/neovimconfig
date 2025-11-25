@@ -1,8 +1,23 @@
 -- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "ts_ls", "pyright", "glsl_analyzer" }
+local servers = { "html", "cssls", "ts_ls", "glsl_analyzer" }
 vim.lsp.enable(servers)
+
+vim.lsp.config("basedpyright", {
+  settings = {
+    basedpyright = {
+      analysis = {
+        typeCheckingMode = "off",
+        autoSearchPaths = true,
+        diagnosticMode = "openFilesOnly",
+        useLibraryCodeForTypes = true,
+      },
+    },
+
+  }
+})
+vim.lsp.enable "basedpyright"
 
 vim.lsp.config("lua_ls", {
   settings = {
