@@ -401,7 +401,7 @@ M.cmp = {
     { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "nvim_lua" },
-    { name = "path" },
+    { name = "async_path" },
   },
   mapping = {
     ["<Tab>"] = cmp.mapping(function(fallback)
