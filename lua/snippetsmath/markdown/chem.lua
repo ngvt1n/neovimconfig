@@ -12,9 +12,9 @@ local l = require "luasnip.extras".lambda
 local in_mathzone = utils.in_mathzone
 
 return {
-  s("aq", t "_{(aq)}"),
-  s("solid", t "_{(s)}"),
-  s("gas", t "_{(g)}")
+  s("aq", t "(aq)"),
+  s("solid", t "(s)"),
+  s("gas", t "(g)")
 }, {
   s({ trig = "\\L" }, t "\\, L", { condition = in_mathzone }),
   s({ trig = "mL" }, t "\\, mL", { condition = in_mathzone }),
