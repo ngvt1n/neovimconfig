@@ -172,7 +172,7 @@ M.telescope = {
       timeout = 100,
     },
   },
-  extensions_list = { "themes", "workspaces", "aerial" },
+  extensions_list = { "themes", "workspaces", "aerial", "symbols" },
   extensions = {
     file_browser = {},
   },
