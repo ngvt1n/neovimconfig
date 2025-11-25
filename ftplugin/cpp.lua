@@ -4,3 +4,4 @@
 local o = vim.o
 
 o.makeprg = "clear && g++ %:p -o %:p:r && %:p:r > /tmp/cpp_output && cat /tmp/cpp_output"
+o.shiftwidth = 4
