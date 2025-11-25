@@ -12,7 +12,7 @@ return {
             a = { '@function.outer' },
             i = { '@function.inner' },
           }),
-          m = {'%$().-()%$', '^.().*().$'},
+          m = { '%$().-()%$', '^.().*().$' },
           M = {
             {
               '%f[$]%s*%$%$\r?\n().-[%s%S]-()\r?\n%s*%$%$%f[^$]', -- around (a)
@@ -102,7 +102,7 @@ return {
     cmd = { "CopilotChat", "CopilotChatToggle" },
     dependencies = {
       { "zbirenbaum/copilot.lua" },
-      { "nvim-lua/plenary.nvim" },       -- for curl, log wrapper
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
       { "nvim-treesitter/nvim-treesitter" },
     },
     opts = overrides.copilotchat,

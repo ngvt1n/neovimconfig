@@ -16,37 +16,28 @@ M.autopairs = {
       -- highlight = 'Search',
       -- highlight_grey = 'Comment'
     },
-  }
+  },
 }
 
 M.imgclip = {
-  dir_path = function()
-    return vim.fn.expand("%:p:h") .. "/assets/"
-  end,
-  extension = "jpg", ---@type string | fun(): string
-  file_name = "%Y-%m-%d-%H-%M-%S", ---@type string | fun(): string
-  relative_to_current_file = true, ---@type boolean | fun(): boolean
-  use_cursor_in_template = false,
-  insert_mode_after_paste = false,
-  prompt_for_file_name = false, ---@type boolean | fun(): boolean
+  default = {
+    extension = "jpg",
+    file_name = "%Y-%m-%d-%H-%M-%S",
+    relative_to_current_file = true,
+    prompt_for_file_name = false,
+    use_cursor_in_template = false,
+    insert_mode_after_paste = false,
 
-  filetypes = {
-    tex = {
-      template = [[
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\textwidth]{assets/$FILE_NAME}
-\end{figure}
-    ]], ---@type string | fun(context: table): string
+    filetypes = {
+      markdown = {
+        template = "![$LABEL]($FILE_PATH)",
+      },
     },
-    markdown = {
-      template = "![$LABEL]($FILE_PATH)",
-    }
   },
 }
 
 M.context = {
-  max_lines = 5,   -- How many lines the window should span. Values <= 0 mean no limit.
+  max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
   separator = "·",
 }
 
@@ -110,7 +101,9 @@ M.treesitter = {
     disable_virtual_text = true,
   },
   ensure_installed = {
-    "lua", "luadoc", "printf",
+    "lua",
+    "luadoc",
+    "printf",
     "vim",
     "vimdoc",
     "query",
@@ -138,14 +131,14 @@ M.treesitter = {
       enable = true,
     },
     move = {
-      enable = true ,
+      enable = true,
       goto_next_start = {
-        ["))"] = "@latex.outer"
+        ["))"] = "@latex.outer",
       },
       goto_previous_start = {
-        ["(("] = "@latex.outer"
-      }
-    }
+        ["(("] = "@latex.outer",
+      },
+    },
   },
   playground = {
     enable = true,
@@ -153,16 +146,16 @@ M.treesitter = {
     updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
     persist_queries = false, -- Whether the query persists across vim sessions
     keybindings = {
-      toggle_query_editor = 'o',
-      toggle_hl_groups = 'i',
-      toggle_injected_languages = 't',
-      toggle_anonymous_nodes = 'a',
-      toggle_language_display = 'I',
-      focus_language = 'f',
-      unfocus_language = 'F',
-      update = 'R',
-      goto_node = '<cr>',
-      show_help = '?',
+      toggle_query_editor = "o",
+      toggle_hl_groups = "i",
+      toggle_injected_languages = "t",
+      toggle_anonymous_nodes = "a",
+      toggle_language_display = "I",
+      focus_language = "f",
+      unfocus_language = "F",
+      update = "R",
+      goto_node = "<cr>",
+      show_help = "?",
     },
   },
 }
@@ -273,13 +266,13 @@ M.cmp = {
       option = {
         keyword_pattern = [==[\\\?\%([^ ()&$,*{}\\]\+\)\%(\({[^{}]*}\)\|[^ ()$,*{}\\]*\)*]==],
         -- `[[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%([\-.]\w*\)*\)]]`
-      }
+      },
     },
     { name = "luasnip" },
     { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
-    { name = "path" },
+    { name = "async_path" },
   },
   mapping = {
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -297,6 +290,8 @@ M.cmp = {
         fallback()
       end
     end, { "i", "s" }),
+
+    ["<C-Space>"] = cmp.mapping.complete(),
   },
 }
 
