@@ -1,6 +1,7 @@
 local overrides = require("configs.overrides")
 return {
   -- { "michaeljsmith/vim-indent-object", lazy = false },
+  { "nvchad/ui", url="https://github.com/ngvt1n/ui", branch="tin" },
   {
     {
       "pwntester/octo.nvim",
