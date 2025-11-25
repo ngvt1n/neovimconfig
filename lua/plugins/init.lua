@@ -19,7 +19,7 @@ return {
     },
   },
   {
-    "HakonHarnes/img-clip.nvim",
+    "ngvt1n/img-clip.nvim",
     event = "VeryLazy",
     cmd = "PasteImage",
   },
