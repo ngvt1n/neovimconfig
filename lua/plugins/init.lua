@@ -215,13 +215,11 @@ return {
       enable_autosnippets = true,
     },
     config = function(_, opts)
+      -- lua snippets
+      require("luasnip.loaders.from_vscode").lazy_load()                           -- friendly snippets
+      require("luasnip.loaders.from_lua").lazy_load({ paths = "./lua/snippets/" }) -- custom lua snippets
       require("luasnip").config.set_config(opts)
       require("nvchad.configs.luasnip")
-      vim.keymap.set(
-        "n",
-        "<Leader>L",
-        '<Cmd>lua   require("luasnip.loaders.from_lua").lazy_load({paths = "./lua/snippetsmath"}) require("luasnip.loaders.from_vscode").lazy_load()  print "Math snippets loaded 👍"<CR>'
-      )
     end,
   },
   {

@@ -91,3 +91,10 @@ map("n", "))", "<CMD>lua require('mini.ai').move_cursor('left', 'a', 'm', {searc
 map("n", "((", "<CMD>lua require('mini.ai').move_cursor('left', 'a', 'm', {search_method='prev'})<CR>")
 map("n", "}}", "<CMD>lua require('mini.ai').move_cursor('left', 'a', 'M', {search_method='next'})<CR>")
 map("n", "{{", "<CMD>lua require('mini.ai').move_cursor('left', 'a', 'M', {search_method='prev'})<CR>")
+
+map("n", "<Leader>L",
+  function ()
+    require("luasnip.loaders.from_lua").lazy_load({paths = "./lua/snippetsmath"})
+    print "Math snippets loaded 👍"
+  end
+)
