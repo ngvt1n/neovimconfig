@@ -63,11 +63,11 @@ M.add = {
 
   ["@string.special.url.html"] = { fg = "blue" },
   -- rainbow headers
-  ["@markup.heading.1.markdown"] = { fg = "red", bold = true },
-  ["@markup.heading.2.markdown"] = { fg = "orange", bold = true },
-  ["@markup.heading.3.markdown"] = { fg = "yellow", bold = true },
-  ["@markup.heading.4.markdown"] = { fg = "green", bold = true },
-  ["@markup.heading.5.markdown"] = { fg = "blue", bold = true },
+  ["@markup.heading.1.markdown"] = { fg = "red", bg = { "black", "red", 8 }, bold = true },
+  ["@markup.heading.2.markdown"] = { fg = "orange", bg = { "black", "orange", 8 }, bold = true },
+  ["@markup.heading.3.markdown"] = { fg = "yellow", bg = { "black", "yellow", 8 }, bold = true },
+  ["@markup.heading.4.markdown"] = { fg = "green", bg = { "black", "green", 8 }, bold = true },
+  ["@markup.heading.5.markdown"] = { fg = "blue", bg = { "black", "blue", 8 }, bold = true },
   ["@markup.link.label.markdown_inline"] = { fg = "yellow" },
   ["@lsp.type.class.markdown"] = { fg = "yellow" },
   ["@markup.link.url.markdown_inline"] = { italic = true, fg = "cyan", underline = false },
