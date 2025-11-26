@@ -16,8 +16,8 @@ M.override = {
   -- MatchParen = { fg = "NONE", bg = "NONE", underline = true },
   -- MatchParenCur = { fg = "NONE", bg = "NONE", underline = true },
   -- MatchWord = { fg = "NONE", bg = "NONE", underline = true },
-  ["@markup.strong"] = { fg = "red", bold = true },
-  ["@markup.italic"] = { fg = "yellow", italic = true },
+  ["@markup.strong"] = { fg = "red", bg = { "black", "red", 5 }, bold = true },
+  ["@markup.italic"] = { fg = "white", bg = { "black", "white", 5 }, italic = true },
   ["@markup.strikethrough"] = { underline = true, italic = true, fg = "red" },
   --
   St_InsertmodeText = { bold = true },
@@ -40,6 +40,7 @@ M.override = {
 
 ---@type HLTable
 M.add = {
+  ["@latex.outer"] = { fg = "yellow", bg = { "black", "yellow", 5 }, italic = true },
   texCmd = { fg = "yellow" },
   texCmdEnv = { fg = "yellow" },
   texMathDelim = { fg = "yellow" },

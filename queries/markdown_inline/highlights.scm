@@ -1,4 +1,3 @@
-((latex_block)) @markup.italic
 
 ; From MDeiml/tree-sitter-markdown
 (code_span) @markup.raw @nospell
@@ -120,3 +119,4 @@
   (#any-of? @character.special "&ensp;" "&emsp;")
   (#set! conceal " "))
 
+((latex_block)) @latex.outer
