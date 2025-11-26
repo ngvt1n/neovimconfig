@@ -131,6 +131,7 @@ return {
   },
   {
     "iamcco/markdown-preview.nvim",
+    url = "https://github.com/ngvt1n/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = "cd app && npm install && git restore .",
     init = function()
