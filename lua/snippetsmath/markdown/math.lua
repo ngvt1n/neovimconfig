@@ -51,8 +51,7 @@ end
 
 
 return {
-  s({ trig = "no" }, fmta("∥ <> ∥<>", { i(1), i(0) }), { condition = in_mathzone }), -- set
-  s({ trig = "\\circ" }, t "∘ ", { condition = in_mathzone }), -- set
+  s({ trig = "\\circ" }, t "∘ ", { show_condition = in_mathzone }), -- set
 }, {
   -- expressions
   s(
@@ -115,6 +114,11 @@ return {
     fmta("∮_{<>} <> ⋅ d\\vec{r} <>", { i(1), i(2), i(0) }),
     { condition = in_mathzone }
   ),
+    s(
+      { trig = "oiint" },
+      fmta("∯_{<>} <> ⋅ d\\vec{S} <>", { i(1), i(2), i(0) }),
+      { condition = in_mathzone }
+    ),
   s(
     { trig = "sum" },
     fmta("∑_{<>}^{<>} <>", { i(1), i(2), i(0) }), { condition = in_mathzone }
