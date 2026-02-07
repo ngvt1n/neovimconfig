@@ -7,6 +7,7 @@ local options = {
     java = { "clang-format" },
     cpp = { "clang-format" },
     c = { "clang-format-c" },
+    python = { "ruff_format" }
   },
   formatters = {
     ["clang-format-c"] = {
