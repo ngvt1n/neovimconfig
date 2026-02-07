@@ -89,7 +89,7 @@ M.add = {
   CmpItemKindCopilot = { bg = "vibrant_green", fg = "black" },
   DiagnosticUnnecessary = { fg = "purple", italic = true },
   IblScope = { fg = "light_grey" },
-  CursorLine = { bg = "white" },
+  CursorLine = { bg = { "black", "cyan", 5} },
 }
 
 return M
