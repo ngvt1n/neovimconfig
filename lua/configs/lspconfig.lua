@@ -1,7 +1,14 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "ts_ls", "glsl_analyzer" }
+local servers = { "html", "ts_ls", "glsl_analyzer" }
 vim.lsp.enable(servers)
+
+vim.lsp.config("cssls", {
+  settings = {
+    css = { lint = { validProperties = { "composes" }, } }
+  }
+})
+vim.lsp.enable("cssls")
 
 vim.lsp.config("basedpyright", {
   settings = {
@@ -10,7 +17,7 @@ vim.lsp.config("basedpyright", {
         typeCheckingMode = "off",
         autoSearchPaths = true,
         diagnosticMode = "openFilesOnly",
-        useLibraryCodeForTypes = true,
+        -- useLibraryCodeForTypes = true,
       },
     },
 
