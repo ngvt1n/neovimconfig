@@ -2,6 +2,46 @@ local overrides = require("configs.overrides")
 return {
   -- { "michaeljsmith/vim-indent-object", lazy = false },
   {
+    "igorlfs/nvim-dap-view",
+    lazy = false,
+    opts = {
+      winbar = { controls = { enabled = true }}
+    }
+  },
+  {
+    "mfussenegger/nvim-dap",
+    cmd = { "DapContinue" },
+    dependencies = {
+      {
+        "mfussenegger/nvim-dap-python",
+        config = function()
+          local dap = require('dap')
+          local configs = {}
+          dap.configurations.python = configs
+          local python_path = 'C:/Users/tinnguyen/AppData/Local/nvim-data/mason/packages/debugpy/venv/Scripts/python.EXE'
+          -- python_path/python -m debugpy --version might require -Xfrozen_modules=off
+          -- this is the debugee cannot be debugged if it is a frozen module
+          -- in the context of cs252, likely not
+          require('dap-python').setup(
+            python_path,
+            { include_configs = false, }
+          )
+          table.insert(configs, {
+            type = 'python',
+            request = 'launch',
+            name = 'file Windows',
+            program = '${file}',
+            console = "internalConsole",
+            pythonPath = function()
+              print(vim.fn.getcwd() .. '/.venv/Scripts/python')
+              return vim.fn.getcwd() .. '/.venv/Scripts/python'
+            end
+          })
+        end
+      },
+    },
+  },
+  {
     "Vimjas/vim-python-pep8-indent",
     ft = "python"
   },

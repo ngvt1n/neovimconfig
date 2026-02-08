@@ -4,6 +4,25 @@
 
 local M = {}
 
+local signs = {
+  DapBreakpoint = { text = "", texthl = "@keyword", linehl = "", numhl = "" },
+  DapBreakpointCondition = { text = "", texthl = "@keyword.repeat.cpp", linehl = "", numhl = "" },
+  DapBreakpointRejected = { text = '', texthl = "@keyword", linehl = '', numhl = '' },
+  DapLogPoint = { text = '', texthl = "SignColumn", linehl = '', numhl = '' },
+  DapStopped = { text = '👉', texthl = "", linehl = '@comment.todo', numhl = '' },
+}
+local function sign_try_define(name)
+  local s = vim.fn.sign_getdefined(name)
+  if vim.tbl_isempty(s) then
+    local opts = signs[name]
+    vim.fn.sign_define(name, opts)
+  end
+end
+
+for name in pairs(signs) do
+  sign_try_define(name)
+end
+
 ---@type Base46HLGroupsList
 M.override = {
   Comment = { italic = true, fg = "grey" },
@@ -89,7 +108,7 @@ M.add = {
   CmpItemKindCopilot = { bg = "vibrant_green", fg = "black" },
   DiagnosticUnnecessary = { fg = "purple", italic = true },
   IblScope = { fg = "light_grey" },
-  CursorLine = { bg = { "black", "cyan", 5} },
+  CursorLine = { bg = { "black", "cyan", 5 } },
 }
 
 return M
