@@ -39,7 +39,7 @@
   "telescope.nvim": { "branch": "master", "commit": "ad7d9580338354ccc136e5b8f0aa4f880434dcdc" },
   "treesitter-indent-object.nvim": { "branch": "master", "commit": "35e5037acd7e16fabfb2b3e506b3bbcf123f615e" },
   "treesj": { "branch": "main", "commit": "186084dee5e9c8eec40f6e39481c723dd567cb05" },
-  "ui": { "branch": "tin", "commit": "127249c6d82ab6961c8f4783a7a37fe3cbcc2dde" },
+  "ui": { "branch": "tin", "commit": "f4b2a191422402e488e207ca2c5dd3f7c844d4fd" },
   "vim-python-pep8-indent": { "branch": "master", "commit": "60ba5e11a61618c0344e2db190210145083c91f8" },
   "workspaces.nvim": { "branch": "master", "commit": "55a1eb6f5b72e07ee8333898254e113e927180ca" }
 }
