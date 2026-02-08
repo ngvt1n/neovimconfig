@@ -197,6 +197,8 @@ return {
     },
     opts = {
       enable_autosnippets = true,
+      history = true,
+      updateevents = "TextChanged,TextChangedI",
     },
     config = function(_, opts)
       require("luasnip").config.set_config(opts)
@@ -231,6 +233,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     opts = overrides.treesitter,
   },
   {
