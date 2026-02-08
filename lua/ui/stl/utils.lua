@@ -50,7 +50,9 @@ M.modes = {
   ["v"] = { "[■ •ㅅ•]■ ", "Visual" },
   ["vs"] = { "[■ •ㅅ•]■ -CHAR (Ctrl O)", "Visual" },
   ["V"] = { "[■ -ㅅ-]■ ", "Visual" },
-  -- ["Vs"] = { "[⊃--]⊃", "Visual" },
+  ["Vs"] = { "[■ ?ㅅ?]■ ", "Visual" },
+  [" "] = { "[⊃▩ ㅅ▩]⊃ ", "Visual" },
+  [""] = { "[■ •ㅅ•]■ - BLOCK", "Visual" },
   -- [""] = { "[⊃--]⊃", "Visual" },
 
   ["i"] = { "[❀ •؎ •]φ", "Insert" },
@@ -68,7 +70,7 @@ M.modes = {
 
   ["s"] = { "SELECT", "Select" },
   ["S"] = { "S-LINE", "Select" },
-  [""] = { "S-BLOCK", "Select" },
+  -- [""] = { "S-BLOCK", "Select" },
   ["c"] = { "[⊃ *ㅅ*]⊃", "Command" },
   ["cv"] = { "[⊃ *ㅅ*]⊃", "Command" },
   ["ce"] = { "[⊃ *ㅅ*]⊃", "Command" },
