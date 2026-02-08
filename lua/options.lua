@@ -12,6 +12,8 @@ o.shiftwidth = 2
 o.tabstop = 4
 o.fileformat = "unix"
 -- o.number = false
+o.cursorlineopt = "both"
+o.winborder='single'
 
 g.loaded_matchparen = 1
 g.matchup_matchparen_deferred = 1
