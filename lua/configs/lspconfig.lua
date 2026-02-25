@@ -1,11 +1,16 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "ts_ls", "glsl_analyzer" }
+local servers = { "html", "ts_ls", "glsl_analyzer", "angularls" }
 vim.lsp.enable(servers)
 
 vim.lsp.config("cssls", {
   settings = {
-    css = { lint = { validProperties = { "composes" }, } }
+    css = {
+      lint = {
+        validProperties = { "composes" },
+        unknownAtRules = "ignore"
+      },
+    }
   }
 })
 vim.lsp.enable("cssls")
