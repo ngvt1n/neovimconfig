@@ -138,23 +138,34 @@ M.peek = {
 }
 
 M.copilotchat = {
-  debug = false,
-  question_header = ">",
-  answer_header = "<",
-  error_header = "**!!!**",
-  separator = " ",
+  window = {
+    layout = 'float',
+    width = 100,
+    height = 20,
+    title = '',
+  },
+  headers = {
+    user = '',
+    assistant = '󰍹',
+    tool = '',
+  },
+  -- debug = false,
+  -- question_header = ">",
+  -- answer_header = "<",
+  -- error_header = "**!!!**",
+  -- separator = " ",
 
-  show_folds = false,
+  -- show_folds = false,
   show_help = false,
-  auto_insert_mode = false,
+  -- auto_insert_mode = false,
 
-  context = "buffers",
+  -- context = "buffers",
   -- See Configuration section for rest
   -- window = {
   --   layout = "float",
   --   border = "rounded",
   -- },
-  model = 'gpt-4o'
+  -- model = 'gpt-4o'
 }
 
 M.copilot = {
