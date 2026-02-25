@@ -5,10 +5,10 @@
 local M = {}
 
 local signs = {
-  DapBreakpoint = { text = "", texthl = "@keyword", linehl = "", numhl = "" },
-  DapBreakpointCondition = { text = "", texthl = "@keyword.repeat.cpp", linehl = "", numhl = "" },
-  DapBreakpointRejected = { text = '', texthl = "@keyword", linehl = '', numhl = '' },
-  DapLogPoint = { text = '', texthl = "SignColumn", linehl = '', numhl = '' },
+  DapBreakpoint = { text = "🐞", texthl = "", linehl = "", numhl = "" },
+  DapBreakpointCondition = { text = "❓", texthl = "", linehl = "", numhl = "" },
+  DapBreakpointRejected = { text = '💢', texthl = "", linehl = '', numhl = '' },
+  DapLogPoint = { text = '🔷', texthl = "", linehl = '', numhl = '' },
   DapStopped = { text = '👉', texthl = "", linehl = '@comment.todo', numhl = '' },
 }
 local function sign_try_define(name)
@@ -55,6 +55,7 @@ M.override = {
   NvimTreeRootFolder = { fg = "cyan", bold = false },
   TelescopeSelection = { bold = true },
   Include = { fg = "dark_purple" },
+  ["@type"] = { fg = "blue", },
 }
 
 ---@type HLTable
@@ -108,7 +109,8 @@ M.add = {
   CmpItemKindCopilot = { bg = "vibrant_green", fg = "black" },
   DiagnosticUnnecessary = { fg = "purple", italic = true },
   IblScope = { fg = "light_grey" },
-  CursorLine = { bg = { "black", "cyan", 5 } },
+  CursorLine = { bg = { "black", "yellow", 15 } },
+  CursorLineNr = { bg = { "black", "yellow", 15 } },
 }
 
 return M
