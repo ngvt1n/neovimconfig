@@ -125,3 +125,7 @@ map({'n', 'v'}, '<Leader>dh', function()
 map({'n', 'v'}, '<Leader>dp', function()
       require('dap.ui.widgets').preview()
     end)
+
+map({'n', 'i'}, '<A-S-i>', function()
+  os.execute('start wt -d "' .. vim.fn.getcwd() .. '"')
+end)
