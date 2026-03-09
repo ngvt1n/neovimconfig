@@ -1,6 +1,13 @@
 local overrides = require("configs.overrides")
 return {
   {
+    "folke/zen-mode.nvim",
+    event = "User FilePost",
+    opts = {
+      width = 70
+    }
+  },
+  {
     'nvim-mini/mini.ai',
     version = '*',
     event = "User FilePost",
