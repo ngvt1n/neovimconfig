@@ -98,3 +98,7 @@ map("n", "<Leader>L",
     print "Math snippets loaded 👍"
   end
 )
+
+map({'n', 'i'}, '<A-S-i>', function()
+  os.execute('start wt -d "' .. vim.fn.getcwd() .. '"')
+end)
