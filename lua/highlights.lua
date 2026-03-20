@@ -9,7 +9,7 @@ local signs = {
   DapBreakpointCondition = { text = "❓", texthl = "", linehl = "", numhl = "" },
   DapBreakpointRejected = { text = '💢', texthl = "", linehl = '', numhl = '' },
   DapLogPoint = { text = '🔷', texthl = "", linehl = '', numhl = '' },
-  DapStopped = { text = '👉', texthl = "", linehl = '@comment.todo', numhl = '' },
+  DapStopped = { text = '👉', texthl = "", linehl = '@markup.underline', numhl = '' },
 }
 local function sign_try_define(name)
   local s = vim.fn.sign_getdefined(name)
