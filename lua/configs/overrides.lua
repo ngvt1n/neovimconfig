@@ -105,10 +105,14 @@ M.context = {
 
 M.aerial = {
   backends = {
+    python = {"lsp"},
     ["_"] = { "treesitter", "lsp" },
   },
   filter_kind = {
     lua = false,
+    python = {
+      "Method"
+    },
     -- lua = {
     --   -- "String",
     --   "Constructor",
