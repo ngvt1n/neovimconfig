@@ -154,14 +154,16 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "main",
+    commit = "d23a3ca9",
     keys = {
       { ",,", "<cmd>CopilotChatToggle<cr>", mode = { "n", "v" }, desc = "CopilotChat - Toggle" },
     },
     cmd = { "CopilotChat", "CopilotChatToggle" },
     dependencies = {
-      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log wrapper
+      { "zbirenbaum/copilot.lua" },
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+      { "nvim-treesitter/nvim-treesitter" },
     },
-    build = "make tiktoken",
     opts = overrides.copilotchat,
   },
   {

@@ -148,11 +148,11 @@ M.copilotchat = {
   error_header = "**!!!**",
   separator = " ",
 
-  -- show_folds = false,
+  show_folds = false,
   show_help = false,
-  -- auto_insert_mode = false,
+  auto_insert_mode = false,
 
-  -- context = "buffers",
+  context = "buffers",
   -- See Configuration section for rest
   -- window = {
   --   layout = "float",
