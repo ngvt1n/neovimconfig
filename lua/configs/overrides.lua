@@ -142,22 +142,11 @@ M.peek = {
 }
 
 M.copilotchat = {
-  window = {
-    layout = 'float',
-    width = 100,
-    height = 20,
-    title = '',
-  },
-  headers = {
-    user = '',
-    assistant = '󰍹',
-    tool = '',
-  },
-  -- debug = false,
-  -- question_header = ">",
-  -- answer_header = "<",
-  -- error_header = "**!!!**",
-  -- separator = " ",
+  debug = false,
+  question_header = ">",
+  answer_header = "<",
+  error_header = "**!!!**",
+  separator = " ",
 
   -- show_folds = false,
   show_help = false,
@@ -169,7 +158,7 @@ M.copilotchat = {
   --   layout = "float",
   --   border = "rounded",
   -- },
-  -- model = 'gpt-4o'
+  model = 'gpt-4o'
 }
 
 M.copilot = {
