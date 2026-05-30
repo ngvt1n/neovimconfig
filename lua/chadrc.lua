@@ -1,5 +1,7 @@
--- This file  needs to have same structure as nvconfig.lua
--- https://github.com/NvChad/NvChad/blob/v2.5/lua/nvconfig.lua
+-- This file needs to have same structure as nvconfig.lua 
+-- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
+-- Please read that file to know all available options :( 
+
 ---@type ChadrcConfig
 local M = {}
 
@@ -11,8 +13,8 @@ M = {
     statusline = overrides.statusline,
     tabufline = overrides.tabufline,
     cmp = {
-      -- style = "atom_colored", -- default/flat_light/flat_dark/atom/atom_colored
-      icons = true,
+      style = "default", -- default/flat_light/flat_dark/atom/atom_colored
+      format_colors = { lsp = true, icon = "󱓻" },
       icons_left = true,
     },
     telescope = { style = "borderless" },
@@ -20,8 +22,7 @@ M = {
   cheatsheet = { theme = "grid" },
   colorify = {
     enabled = true,
-    mode = "virtual", -- fg, bg, virtual
-    virt_text = "󱓻 ",
+    mode = "bg", -- fg, bg, virtual
     highlight = { hex = true, lspvars = true },
   },
   base46 = {
@@ -31,7 +32,6 @@ M = {
     hl_add = highlights.add,
   },
   mason = {
-    cmd = true,
     pkgs = {
       -- lua stuff
       "lua-language-server",
@@ -60,6 +60,11 @@ M = {
       -- "marksman",
     },
   },
+
+  term = {
+    base46_colors = false,
+  },
+
 }
 
 return M
