@@ -106,11 +106,12 @@ M.add = {
   St_Copilot = { bg = "vibrant_green", fg = "black" },
   St_CopilotSep = { bg = "black", fg = "vibrant_green" },
   St_CopilotDisabled = { bg = "black", fg = "red" },
+  St_NormalMode = { bg = "green" },
   CmpItemKindCopilot = { bg = "vibrant_green", fg = "black" },
   DiagnosticUnnecessary = { fg = "purple", italic = true },
   IblScope = { fg = "light_grey" },
-  CursorLine = { bg = { "black", "yellow", 15 } },
-  CursorLineNr = { bg = { "black", "yellow", 15 } },
+  CursorLine = { bg = { "black", "white", 7 } },
+  -- CursorLineNr = { bg = { "black", "yellow", 15 } },
 }
 
 return M
