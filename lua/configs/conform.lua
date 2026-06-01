@@ -1,6 +1,6 @@
 local options = {
   formatters_by_ft = {
-    lua = {},
+    lua = { "lua_ls" },
     css = { "prettier" },
     html = { "prettier" },
     json = { "prettier" },
