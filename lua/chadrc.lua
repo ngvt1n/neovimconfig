@@ -1,17 +1,23 @@
--- This file needs to have same structure as nvconfig.lua 
+-- This file needs to have same structure as nvconfig.lua
 -- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
--- Please read that file to know all available options :( 
+-- Please read that file to know all available options :(
 
 ---@type ChadrcConfig
 local M = {}
 
 local highlights = require "highlights"
-local overrides = require("configs.ochadrc")
 
 M = {
   ui = {
-    statusline = overrides.statusline,
-    tabufline = overrides.tabufline,
+    statusline = {
+      theme = "default", -- default/vscode/vscode_colored/minimal
+      separator_style = "round",
+      order = { "sky", "cwd", "git", "%=", "lsp_msg", "diagnostics", "%=", "lsp", "cursor", "clock", "copilot" },
+    },
+    tabufline = {
+      lazyload = false,
+      order = { 'faces', 'spinner', 'buffers', 'tabs' },
+    },
     cmp = {
       style = "default", -- default/flat_light/flat_dark/atom/atom_colored
       format_colors = { lsp = true, icon = "󱓻" },
@@ -26,7 +32,7 @@ M = {
     highlight = { hex = true, lspvars = true },
   },
   base46 = {
-    theme = require("ui.stl.theme")(), -- base16, tokyonight, onedark, gruvbox, catppuccino
+    theme = require("ui.theme"), -- base16, tokyonight, onedark, gruvbox, catppuccino
     transparency = false,
     hl_override = highlights.override,
     hl_add = highlights.add,
