@@ -52,6 +52,7 @@ M.override = {
   St_pos_text = { fg = "yellow", bg = "statusline_bg", bold = true },
   St_pos_icon = { bg = "yellow", fg = "black", bold = true },
   St_file = { bold = true, fg = "white", },
+  TbBufOn = { bold = true },
   NvimTreeRootFolder = { fg = "cyan", bold = false },
   TelescopeSelection = { bold = true },
   Include = { fg = "dark_purple" },
