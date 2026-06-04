@@ -185,31 +185,6 @@ M.treesitter = {
     disable = { "c", "ruby", "help" },
     disable_virtual_text = true,
   },
-  ensure_installed = {
-    "java",
-    "vim",
-    -- lua stuff
-    "lua",
-    -- web dev stuff
-    "html",
-    "css",
-    "javascript",
-    "typescript",
-    "tsx",
-    --- c/cpp stuff
-    "c",
-    "cpp",
-    "cuda",
-    -- python stuff
-    "python",
-    --- note taking stuff
-    "markdown",
-    "markdown_inline",
-    --- graphics stuff
-    "glsl",
-    ---
-    "diff",
-  },
   indent = {
     enable = true,
     -- disable = {

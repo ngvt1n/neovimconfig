@@ -278,7 +278,9 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    opts = overrides.treesitter,
+    opts = function ()
+      require("configs.treesitter")
+    end
   },
   {
     "nvim-tree/nvim-tree.lua",
