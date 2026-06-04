@@ -129,3 +129,11 @@ map({'n', 'v'}, '<Leader>dp', function()
 map({'n', 'i'}, '<A-S-i>', function()
   os.execute('start wt -d "' .. vim.fn.getcwd() .. '"')
 end)
+
+-- buffer stuff
+map({'n', 'i'}, '<A-S-b>', function()
+  local buf_filename = vim.api.nvim_buf_get_name(0):gsub('\\', '/')
+  local buf_filepath = buf_filename:gsub('/.*$', '')
+  os.execute('start wt -d "' .. buf_filepath .. '" nvim ' .. buf_filename)
+end, { desc = "Open buffer in new window"})
+
