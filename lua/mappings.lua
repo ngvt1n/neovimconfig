@@ -137,3 +137,5 @@ map({'n', 'i'}, '<A-S-b>', function()
   os.execute('start wt -d "' .. buf_filepath .. '" nvim ' .. buf_filename)
 end, { desc = "Open buffer in new window"})
 
+map('n', '<A-S-Left>', function () require("nvchad.tabufline").move_buf(-1) end)
+map('n', '<A-S-Right>', function () require("nvchad.tabufline").move_buf(1) end)
