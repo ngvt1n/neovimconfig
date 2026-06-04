@@ -278,9 +278,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    opts = function ()
-      require("configs.treesitter")
-    end
+    cmd = { "TSInstall" },
+    opts = require("configs.treesitter")
   },
   {
     "nvim-tree/nvim-tree.lua",
