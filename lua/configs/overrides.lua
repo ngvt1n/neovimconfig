@@ -179,20 +179,6 @@ M.copilot = {
   },
 }
 
-M.treesitter = {
-  matchup = {
-    enable = true,
-    disable = { "c", "ruby", "help" },
-    disable_virtual_text = true,
-  },
-  indent = {
-    enable = true,
-    -- disable = {
-    --   "python"
-    -- },
-  },
-}
-
 M.telescope = {
   defaults = {
     prompt_prefix = "   ",
