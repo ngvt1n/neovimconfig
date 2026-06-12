@@ -1,6 +1,6 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "ts_ls", "glsl_analyzer", "angularls" }
+local servers = { "html", "ts_ls", "glsl_analyzer", "prismals" }
 vim.lsp.enable(servers)
 
 vim.lsp.config("cssls", {
