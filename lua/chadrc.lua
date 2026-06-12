@@ -66,9 +66,9 @@ M = {
       -- "marksman",
     },
   },
-
   term = {
-    base46_colors = false,
+    float = { border = {'✀','-','\\','|','/','-','\\','|'} },
+    base46_colors = true,
   },
 
 }
