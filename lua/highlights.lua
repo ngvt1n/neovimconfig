@@ -57,6 +57,9 @@ M.override = {
   TelescopeSelection = { bold = true },
   Include = { fg = "dark_purple" },
   ["@type"] = { fg = "blue", },
+  -- CmpBorder = { fg = "black", bg = "blue" },
+  FloatBorder = { bg = {"black", "pink", 20} },
+  Float = { bg = {"black", "pink", 20} },
 }
 
 ---@type HLTable

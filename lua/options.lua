@@ -15,6 +15,8 @@ o.fileformat = "unix"
 o.cursorlineopt = "both"
 o.winborder='single'
 
+-- o.winborder = [[✀,─,x,│,╯,─,x,│]]
+
 g.loaded_matchparen = 1
 g.matchup_matchparen_deferred = 1
 g.matchup_matchparen_hi_surround_always = 1
