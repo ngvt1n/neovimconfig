@@ -1,9 +1,10 @@
 local options = {
   formatters_by_ft = {
+    ts = { "biome " },
+    css = { "biome" },
+    html = { "biome" },
+    json = { "biome" },
     lua = { "lua_ls" },
-    css = { "prettier" },
-    html = { "prettier" },
-    json = { "prettier" },
     java = { "clang-format" },
     cpp = { "clang-format" },
     c = { "clang-format-c" },
