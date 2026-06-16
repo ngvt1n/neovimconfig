@@ -115,6 +115,9 @@ M.add = {
   DiagnosticUnnecessary = { fg = "purple", italic = true },
   IblScope = { fg = "light_grey" },
   CursorLine = { bg = { "black", "white", 7 } },
+  WinSeparator = {
+    fg = { "black", "green", 50 },
+  },
   -- CursorLineNr = { bg = { "black", "yellow", 15 } },
 }
 

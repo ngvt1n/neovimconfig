@@ -14,8 +14,10 @@ o.fileformat = "unix"
 -- o.number = false
 o.cursorlineopt = "both"
 o.winborder='single'
+o.pumborder='single'
 
--- o.winborder = [[✀,─,x,│,╯,─,x,│]]
+-- o.fillchars = 'eob:~,vert:║,horiz:═,stl:═,'
+o.fillchars = 'eob:~,vert:(,horiz:╭,stl:╭,'
 
 g.loaded_matchparen = 1
 g.matchup_matchparen_deferred = 1
