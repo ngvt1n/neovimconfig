@@ -41,8 +41,8 @@ vim.cmd([[
 
 o.shell = "pwsh.exe"
 o.shellcmdflag = [[
--NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8; 
-$PSDefaultParameterValues['Out-File:Encoding']='utf8'; 
+-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
+$PSDefaultParameterValues['Out-File:Encoding']='utf8';
 $PSStyle.OutputRendering='plaintext';
 Remove-Alias -Force -ErrorAction SilentlyContinue tee;
 ]]

@@ -1,21 +1,5 @@
 local M = {}
 
-local multiselect = function(prompt_bufnr)
-  local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
-  local multi = picker:get_multi_selection()
-  if not vim.tbl_isempty(multi) then
-    require("telescope.actions").close(prompt_bufnr)
-    for _, j in pairs(multi) do
-      if j.path ~= nil then
-        vim.cmd(string.format("%s %s", "edit", j.path))
-      end
-    end
-  else
-    require("telescope.actions").select_default(prompt_bufnr)
-  end
-end
-
-
 M.gitsigns = {
   on_attach = function(bufnr)
     local gitsigns = require('gitsigns')
@@ -105,7 +89,7 @@ M.context = {
 
 M.aerial = {
   backends = {
-    python = {"lsp"},
+    python = { "lsp" },
     ["_"] = { "treesitter", "lsp" },
   },
   filter_kind = {
@@ -179,50 +163,31 @@ M.copilot = {
   },
 }
 
-M.telescope = {
-  defaults = {
-    prompt_prefix = "   ",
-    selection_caret = " ",
-    entry_prefix = " ",
-    sorting_strategy = "ascending",
-    preview = {
-      filesize_limit = 0.1,
-      highligh_limit = 0.1,
-      timeout = 100,
-    },
-    layout_config = {
-      horizontal = {
-        prompt_position = "top",
-        preview_width = 0.55,
-      },
-      width = 0.87,
-      height = 0.80,
-    },
-    mappings = {
-      n = { ["q"] = require("telescope.actions").close },
-    },
-  },
-  extensions_list = { "themes", "workspaces", "aerial", "file_browser" },
-  pickers = {
-    live_grep = {
-      mappings = {
-        n = { l = multiselect, }
-      }
-    },
-    find_files = {
-      mappings = {
-        n = { l = multiselect, }
-      }
-    },
-  },
-}
+M.telescope = function()
+  dofile(vim.g.base46_cache .. "telescope")
 
-M.telescopefb = function()
-  local action_state = require "telescope.actions.state"
-  local actions = require("telescope").extensions.file_browser.actions
-  local fb_utils = require "telescope._extensions.file_browser.utils"
+  local actions = require "telescope".extensions.file_browser.actions
+
+  local multiselect = function()
+    return function(prompt_bufnr)
+      local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+      local multi = picker:get_multi_selection()
+      if not vim.tbl_isempty(multi) then
+        require("telescope.actions").close(prompt_bufnr)
+        for _, j in pairs(multi) do
+          if j.path ~= nil then
+            vim.cmd(string.format("%s %s", "edit", j.path))
+          end
+        end
+      else
+        require("telescope.actions").select_default(prompt_bufnr)
+      end
+    end
+  end
 
   local changecwd = function(prompt_bufnr)
+    local action_state = require "telescope.actions.state"
+    local fb_utils = require "telescope._extensions.file_browser.utils"
     local current_picker = action_state.get_current_picker(prompt_bufnr)
     local finder = current_picker.finder
     local entry_path = action_state.get_selected_entry().Path
@@ -241,7 +206,29 @@ M.telescopefb = function()
     )
   end
 
-  require("telescope").setup {
+  require('telescope').setup({
+    defaults = {
+      prompt_prefix = "   ",
+      selection_caret = " ",
+      entry_prefix = " ",
+      sorting_strategy = "ascending",
+      preview = {
+        filesize_limit = 0.1,
+        highligh_limit = 0.1,
+        timeout = 100,
+      },
+      layout_config = {
+        horizontal = {
+          prompt_position = "top",
+          preview_width = 0.55,
+        },
+        width = 0.87,
+        height = 0.80,
+      },
+      mappings = {
+        n = { ["q"] = require("telescope.actions").close },
+      },
+    },
     extensions = {
       file_browser = {
         initial_mode = "normal",
@@ -264,7 +251,7 @@ M.telescopefb = function()
             ["<C-a>"] = actions.create,
             ["<C-e>"] = actions.rename,
             ["<C-x>"] = actions.move,
-            ["<C-l>"] = multiselect,
+            ["<C-l>"] = multiselect(),
             ["<C-h>"] = actions.goto_parent_dir,
             ["<C-g>"] = actions.toggle_respect_gitignore,
             ["<C-.>"] = actions.toggle_hidden,
@@ -273,7 +260,7 @@ M.telescopefb = function()
             a = actions.create,
             e = actions.rename,
             x = actions.move,
-            l = multiselect,
+            l = multiselect(),
             h = actions.goto_parent_dir,
             c = actions.copy,
             g = actions.toggle_respect_gitignore,
@@ -283,7 +270,21 @@ M.telescopefb = function()
         },
       },
     },
-  }
+    pickers = {
+      live_grep = {
+        mappings = {
+          n = { l = multiselect(), }
+        }
+      },
+      find_files = {
+        mappings = {
+          n = { l = multiselect(), }
+        }
+      },
+    },
+  })
+
+  require("telescope").load_extension "file_browser"
 end
 
 M.workspaces = {
@@ -351,13 +352,6 @@ M.nvimtree = {
 --   },
 -- }
 
-M.blankline = {
-  scope = {
-    show_start = false,
-    show_end = false,
-  },
-}
-
 local cmp = require "cmp"
 M.cmp = {
   sources = {
@@ -389,7 +383,7 @@ M.cmp = {
 
 M.cmpcpp = {
   sources = {
-    { name = "luasnip", priority = "1000000" },
+    { name = "luasnip",   priority = "1000000" },
     { name = "buffer" },
     { name = "async_path" },
   },

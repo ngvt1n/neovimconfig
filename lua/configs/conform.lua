@@ -1,5 +1,6 @@
 local options = {
   formatters_by_ft = {
+    tsx = { "biome "},
     ts = { "biome " },
     css = { "biome" },
     html = { "biome" },

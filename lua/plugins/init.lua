@@ -1,12 +1,22 @@
-local overrides = require("configs.overrides")
+local projects = "~/Documents/Code/Projects/nvim-projects/"
+local overrides = require "configs.overrides"
 return {
   -- { "michaeljsmith/vim-indent-object", lazy = false },
+  { -- when specifying local dependencies, set both name and dev?
+    "nvim-lua/plenary.nvim",
+    -- name = 'plenary.nvim',
+    dev = true,
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "^4.0.0", -- Use for stability; omit to use `main` branch for the latest features
+  },
   {
     "igorlfs/nvim-dap-view",
     lazy = false,
     opts = {
-      winbar = { controls = { enabled = true }}
-    }
+      winbar = { controls = { enabled = true } },
+    },
   },
   {
     "mfussenegger/nvim-dap",
@@ -15,35 +25,33 @@ return {
       {
         "mfussenegger/nvim-dap-python",
         config = function()
-          local dap = require('dap')
+          local dap = require "dap"
           local configs = {}
           dap.configurations.python = configs
-          local python_path = 'C:/Users/tinnguyen/AppData/Local/nvim-data/mason/packages/debugpy/venv/Scripts/python.EXE'
+          local python_path =
+          "C:/Users/tinnguyen/AppData/Local/nvim-data/mason/packages/debugpy/venv/Scripts/python.EXE"
           -- python_path/python -m debugpy --version might require -Xfrozen_modules=off
           -- this is the debugee cannot be debugged if it is a frozen module
           -- in the context of cs252, likely not
-          require('dap-python').setup(
-            python_path,
-            { include_configs = false, }
-          )
+          require("dap-python").setup(python_path, { include_configs = false })
           table.insert(configs, {
-            type = 'python',
-            request = 'launch',
-            name = 'file Windows',
-            program = '${file}',
+            type = "python",
+            request = "launch",
+            name = "file Windows",
+            program = "${file}",
             console = "internalConsole",
             pythonPath = function()
-              print(vim.fn.getcwd() .. '/.venv/Scripts/python')
-              return vim.fn.getcwd() .. '/.venv/Scripts/python'
-            end
+              print(vim.fn.getcwd() .. "/.venv/Scripts/python")
+              return vim.fn.getcwd() .. "/.venv/Scripts/python"
+            end,
           })
-        end
+        end,
       },
     },
   },
   {
     "Vimjas/vim-python-pep8-indent",
-    ft = "python"
+    ft = "python",
   },
   { "nvchad/ui",                  url = "https://github.com/ngvt1n/ui", branch = "tin" },
   {
@@ -57,7 +65,7 @@ return {
         enable_builtin = true,
       },
       dependencies = {
-        "nvim-lua/plenary.nvim",
+        "plenary.nvim",
         "nvim-telescope/telescope.nvim",
         "nvim-tree/nvim-web-devicons",
       },
@@ -75,7 +83,7 @@ return {
     dependencies = {
       "nvim-telescope/telescope.nvim",
       -- "ibhagwan/fzf-lua",
-      "nvim-lua/plenary.nvim",
+      "plenary.nvim",
       "MunifTanjim/nui.nvim",
     },
     opts = {
@@ -86,9 +94,12 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("ibl").setup(overrides.blankline)
-    end,
+    opts = {
+      scope = {
+        show_start = false,
+        show_end = false,
+      },
+    }
   },
   {
     "kiyoon/treesitter-indent-object.nvim",
@@ -116,18 +127,16 @@ return {
     keys = { { "<leader>j", "<Cmd>TSJToggle<CR>" } },
     dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
     config = function()
-      require("treesj").setup({
+      require("treesj").setup {
         use_default_keymaps = false,
-      })
+      }
     end,
   },
-  { "mfussenegger/nvim-jdtls",    config = overrides.jdtls },
   { "seandewar/killersheep.nvim", cmd = "KillKillKill" },
   { "seandewar/nvimesweeper",     cmd = "Nvimesweeper" },
   {
     "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-    config = overrides.telescopefb,
+    dependencies = { "nvim-telescope/telescope.nvim" },
   },
   {
     "nvim-tree/nvim-tree.lua",
@@ -153,18 +162,19 @@ return {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "main",
-    commit = "d23a3ca9",
+    lazy = false,
+    -- branch = "main",
+    -- commit = "d23a3ca9",
     keys = {
       { ",,", "<cmd>CopilotChatToggle<cr>", mode = { "n", "v" }, desc = "CopilotChat - Toggle" },
     },
-    cmd = { "CopilotChat", "CopilotChatToggle" },
-    dependencies = {
-      { "zbirenbaum/copilot.lua" },
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-      { "nvim-treesitter/nvim-treesitter" },
-    },
-    opts = overrides.copilotchat,
+    -- cmd = { "CopilotChat", "CopilotChatToggle" },
+    -- dependencies = {
+    --   { "zbirenbaum/copilot.lua" },
+    --   { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+    --   { "nvim-treesitter/nvim-treesitter" },
+    -- },
+    -- opts = overrides.copilotchat,
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -231,7 +241,7 @@ return {
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
-    opts = require("configs.conform"),
+    opts = require "configs.conform",
   },
   {
     "L3MON4D3/LuaSnip",
@@ -246,7 +256,7 @@ return {
     },
     config = function(_, opts)
       require("luasnip").config.set_config(opts)
-      require("nvchad.configs.luasnip")
+      require "nvchad.configs.luasnip"
     end,
   },
   {
@@ -256,7 +266,7 @@ return {
       {
         "zbirenbaum/copilot-cmp",
         config = function()
-          require("copilot_cmp").setup({})
+          require("copilot_cmp").setup {}
         end,
       },
     },
@@ -268,7 +278,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("configs.lspconfig")
+      require "configs.lspconfig"
     end,
   },
   {
@@ -279,7 +289,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
     cmd = { "TSInstall" },
-    opts = require("configs.treesitter")
+    opts = require "configs.treesitter",
   },
   {
     "nvim-tree/nvim-tree.lua",
@@ -287,12 +297,20 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
-    opts = overrides.telescope,
+    dependencies = {
+      {
+        "nvim-lua/plenary.nvim",
+        name = 'plenary.nvim',
+        dev = true,
+      },
+    },
+    config = overrides.telescope,
   },
   -- disabled plugins
-  { "nvzone/volt",  enabled = false },
-  { "nvzone/menu",  enabled = false },
-  { "nvzone/minty", enabled = false },
+  { "nvzone/volt",                  enabled = false },
+  { "nvzone/menu",                  enabled = false },
+  { "nvzone/minty",                 enabled = false },
+  { "rafamadriz/friendly-snippets", enabled = false },
   {
     "folke/which-key.nvim",
     enabled = false,

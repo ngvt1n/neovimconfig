@@ -1,6 +1,9 @@
 return {
   defaults = { lazy = true },
-  install = { colorscheme = { "nvchad" } },
+  install = {
+    missing = false,
+    colorscheme = { "nvchad" },
+  },
 
   ui = {
     icons = {
@@ -11,7 +14,14 @@ return {
     },
   },
 
+  -- dev = {
+  --   path = '~/Documents/Code/Projects/nvim-projects/'
+  -- },
+
   performance = {
+    cache = {
+      enabled = false,
+    },
     rtp = {
       disabled_plugins = {
         "2html_plugin",
