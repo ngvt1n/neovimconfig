@@ -2,6 +2,7 @@ local overrides = require("configs.overrides")
 return {
   {
     "folke/zen-mode.nvim",
+    -- enabled = false,
     event = "User FilePost",
     opts = {
       width = 70
