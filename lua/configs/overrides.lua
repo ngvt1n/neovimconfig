@@ -99,6 +99,12 @@ M.imgclip = {
       markdown = {
         template = "![$LABEL]($FILE_PATH)",
       },
+      typst = {
+        template = "#image($FILE_PATH)",
+      },
+      typ = {
+        extension = "png"
+      }
     },
   },
 }
