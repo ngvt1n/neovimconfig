@@ -40,6 +40,7 @@ M.override = {
 
 ---@type HLTable
 M.add = {
+  ["@markup.yellow.typst"] = { fg = "yellow", italic = true },
   ["@latex.outer"] = { fg = "yellow", bg = { "black", "yellow", 5 }, italic = true },
   texCmd = { fg = "yellow" },
   texCmdEnv = { fg = "yellow" },
