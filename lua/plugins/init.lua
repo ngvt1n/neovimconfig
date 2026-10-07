@@ -273,6 +273,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     -- dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects'},
     opts = overrides.treesitter
   },
