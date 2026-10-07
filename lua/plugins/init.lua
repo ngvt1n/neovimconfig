@@ -1,6 +1,18 @@
 local overrides = require("configs.overrides")
 return {
   {
+    "sahilsehwag/macrobank.nvim",
+    opts = {
+
+    }
+  },
+  {
+    'chomosuke/typst-preview.nvim',
+    lazy = false, -- or ft = 'typst'
+    version = '1.*',
+    opts = {},    -- lazy.nvim will implicitly calls `setup {}`
+  },
+  {
     "folke/zen-mode.nvim",
     -- enabled = false,
     event = "User FilePost",
