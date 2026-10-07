@@ -14,12 +14,19 @@ o.fileformat = "unix"
 -- o.number = false
 
 if vim.fn.has("win64") then
-  o.shell        = "pwsh.exe"
-  o.shellcmdflag = '-NoLogo -NonInteractive -c'
-  o.shellredir   = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
-  o.shellpipe    = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
-  o.shellquote   = ""
-  o.shellxquote  = ""
+  o.shell = "pwsh.exe"
+  o.shellcmdflag = [[
+-NoLogo -NoProfile 
+-ExecutionPolicy RemoteSigned 
+-Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;
+$PSDefaultParameterValues['Out-File:Encoding']='utf8';
+$PSStyle.OutputRendering='plaintext';
+Remove-Alias -Force -ErrorAction SilentlyContinue tee;
+]]
+  o.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+  o.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+  o.shellquote = ""
+  o.shellxquote = ""
 end
 g.vimtex_imaps_enabled = 0
 
@@ -37,7 +44,7 @@ g.matchup_motion_enabled = 0
 g.matchup_matchparen_fallback = 0
 g.matchup_matchparen_offscreen = 'popup'
 
-vim.cmd [[ 
+vim.cmd [[
     augroup matchup_matchparen_disable_ft
       autocmd!
       autocmd FileType lazy,help let [b:matchup_matchparen_fallback,
@@ -58,4 +65,3 @@ new_cmd("WhereAmI", ':lua print(vim.fn.expand("%:p"))', {})
 new_cmd("WhereAmICopy", ':lua vim.fn.setreg("*", vim.fn.expand("%:p:h"))', {})
 new_cmd("NablaToggle", 'lua require("nabla").toggle_virt()', {})
 new_cmd("Peek", ':lua require("peek").open()<CR>', {})
-
